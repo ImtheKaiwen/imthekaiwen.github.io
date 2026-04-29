@@ -1,0 +1,374 @@
+.dynamic-island-container {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.dynamic-island {
+  background: #000;
+  color: white;
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  pointer-events: auto;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mode Definitions */
+.dynamic-island.default {
+  height: 52px;
+  width: auto;
+  min-width: 150px;
+}
+
+.dynamic-island.search {
+  height: 52px;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+}
+
+.dynamic-island.message {
+  height: auto;
+  min-height: 52px;
+  min-width: 200px;
+  max-width: 450px;
+  width: auto;
+}
+
+.dynamic-island.interactive {
+  height: auto;
+  width: 420px;
+  max-width: calc(100vw - 40px);
+  min-height: 80px;
+  max-height: 85vh;
+  border-radius: 32px;
+}
+
+.island-state-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  flex-shrink: 0;
+}
+
+/* Default Navigation Mode */
+.island-default {
+  padding: 0 12px;
+  gap: 12px;
+}
+
+.island-left-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.island-avatar,
+.island-back-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.island-avatar {
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.island-back-btn {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.island-sticky-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.nav-link.active {
+  color: #000 !important;
+}
+
+.active-indicator {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 50px;
+  z-index: -1;
+}
+
+.island-search-trigger {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+/* Search Mode Stable */
+.island-search {
+  padding: 0 16px;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.island-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  padding: 0;
+}
+
+.search-icon {
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.close-icon {
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Message Mode */
+.island-message {
+  padding: 12px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.message-icon {
+  display: flex;
+  align-items: center;
+  color: #f59e0b; /* Amber/Sparkle color */
+}
+
+.message-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+/* Interactive Mode Stable */
+.dynamic-island.interactive .island-state-wrapper {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  height: auto;
+}
+
+.interactive-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.ai-response-container {
+  padding: 28px 48px 16px 24px;
+  max-height: 40vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ai-response-container::-webkit-scrollbar {
+  display: none;
+}
+
+.ai-response-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.interactive-options {
+  padding: 10px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.interactive-option-btn {
+  background: #fff;
+  color: #000 !important;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.bot-icon {
+  color: #4290F5;
+}
+
+.island-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.island-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.island-close-btn.absolute {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+/* Utility */
+.word-highlight {
+  background: rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
+  border-radius: 4px;
+  padding: 2px 0;
+  transition: all 0.5s ease;
+}
+
+.custom-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(16, 185, 129, 0.2);
+  border-top-color: #10b981;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite !important;
+  filter: drop-shadow(0 0 5px #10b981);
+  display: inline-block;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .dynamic-island.default {
+    height: 48px;
+    border-radius: 24px;
+    min-width: 120px;
+  }
+
+  .dynamic-island.search {
+    height: 48px;
+    width: 94vw;
+  }
+
+  .dynamic-island.interactive {
+    width: 94vw;
+    max-height: 75vh;
+    border-radius: 28px;
+  }
+
+  .island-default {
+    padding: 0 8px;
+    gap: 4px;
+    justify-content: space-between;
+  }
+
+  .nav-link {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .island-avatar,
+  .island-back-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .interactive-header {
+    padding: 12px 16px 8px;
+  }
+
+  .ai-response-container {
+    padding: 12px 16px;
+  }
+}

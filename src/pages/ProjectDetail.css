@@ -1,0 +1,548 @@
+/* ProjectDetail.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+.project-detail-wrapper main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+/* top information */
+.top-info {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin-top: 20px;
+    padding: 40px 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 34px;
+    object-fit: cover;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+.top-info h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    color: #333;
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.top-info p {
+    font-size: clamp(18px, 3vw, 24px);
+    color: #666;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+    max-width: 600px;
+}
+
+.download-btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.download-btn {
+    min-width: 200px;
+    height: 60px;
+    padding: 0 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.download-btn i {
+    font-size: 20px;
+}
+
+.appstore {
+    background-color: var(--theme-color, #4290F5);
+}
+
+.appstore:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.googleplay {
+    background-color: #333;
+    color: white;
+}
+
+.googleplay:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Features */
+.features {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 250px;
+    min-height: 200px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.feature-card .icon {
+    width: 60px;
+    height: 60px;
+    background: var(--theme-gradient, linear-gradient(135deg, #4290F5, #6bb3ff));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card .icon i {
+    color: white;
+    font-size: 24px;
+}
+
+.feature-card h3 {
+    font-size: 16px;
+    color: #666;
+    font-weight: 500;
+}
+
+.feature-card h1 {
+    font-size: 48px;
+    color: var(--theme-color, #4290F5);
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* app view */
+.app-view {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin-top: 40px;
+    background: var(--theme-gradient, linear-gradient(135deg, #4290F5, #6bb3ff));
+    border-radius: 30px;
+    padding: 60px 20px;
+}
+
+.app-view .top-header {
+    color: white;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+}
+
+.app-view .sub-header {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(16px, 2vw, 22px);
+    margin-top: 15px;
+    text-align: center;
+}
+
+.picture-box {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.app-pictures {
+    width: 100%;
+    max-width: 790px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.app-pictures::-webkit-scrollbar {
+    display: none;
+}
+
+.picture {
+    width: 250px;
+    min-width: 250px;
+    height: 550px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.picture:hover {
+    transform: scale(1.02);
+}
+
+.arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    color: var(--theme-color, #4290F5);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.arrow:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* University Info */
+.university-info {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    padding: 40px 20px;
+}
+
+.university-info h1 {
+    font-size: clamp(24px, 4vw, 36px);
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.university-feature-card-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.university-feature-card {
+    width: 280px;
+    min-height: 150px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.university-feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.university-feature-card .icon {
+    width: 50px;
+    height: 50px;
+    background: var(--theme-gradient, linear-gradient(135deg, #4290F5, #6bb3ff));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.university-feature-card .icon i {
+    color: white;
+    font-size: 20px;
+}
+
+.university-feature-card h1 {
+    font-size: 18px;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    max-width: 1400px;
+    background-color: #f8f9fa;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 60px 40px;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    color: #0f1115;
+}
+
+.logo-side h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+}
+
+.logo-footer {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.info-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    color: #0f1115;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.info-box h1 {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+}
+
+.info-box p,
+.info-box a,
+.footer-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #0f1115;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.info-box a:hover,
+.footer-link-btn:hover {
+    color: var(--theme-color, #4290F5);
+    transform: translateX(5px);
+}
+
+.info-box a i,
+.footer-link-btn i {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+    color: var(--theme-color, #4290F5);
+}
+
+@media screen and (max-width: 768px) {
+    .project-detail-wrapper main {
+        padding: 0 15px;
+    }
+
+    .top-info {
+        padding: 20px 10px;
+        margin-top: 10px;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 28px;
+    }
+
+    .download-btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+
+
+    .features {
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .feature-card {
+        width: 100%;
+        min-height: unset;
+        padding: 20px;
+    }
+
+    .feature-card h1 {
+        font-size: 32px;
+    }
+
+    .app-view {
+        padding: 40px 15px;
+        border-radius: 20px;
+    }
+
+    .app-pictures {
+        max-width: 100vw;
+        overflow-x: auto;
+        padding: 0 10px;
+        scroll-snap-type: x mandatory;
+        gap: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .arrow {
+        display: none;
+    }
+
+    .picture-box {
+        padding: 0;
+        gap: 0;
+    }
+
+    .picture {
+        width: 140px;
+        min-width: 140px;
+        height: 300px;
+        scroll-snap-align: center;
+        border-radius: 12px;
+    }
+
+    .university-info {
+        margin-top: 40px;
+        padding: 20px 10px;
+    }
+
+    .university-feature-card-container {
+        gap: 15px;
+    }
+
+    .university-feature-card {
+        width: 100%;
+        padding: 20px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        border-radius: 20px;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .info-side {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .info-box {
+        align-items: center;
+    }
+    
+    .info-box a:hover {
+        transform: translateY(-3px);
+    }
+}

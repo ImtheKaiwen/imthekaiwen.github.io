@@ -1,0 +1,219 @@
+/* IslandShowcase.css - Carousel Mode */
+.showcase-section.carousel-mode {
+  width: 100%;
+  max-width: 1000px;
+  margin: 120px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+}
+
+.showcase-carousel-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  background: rgba(15, 17, 21, 0.02);
+  padding: 80px 40px;
+  border-radius: 40px;
+  border: 1px solid rgba(15, 17, 21, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Glow for Carousel */
+.showcase-carousel-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at 50% 50%, rgba(66, 144, 245, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.showcase-card-wrapper {
+  width: 100%;
+  max-width: 600px;
+  min-height: 180px;
+  text-align: center;
+  z-index: 1;
+}
+
+.showcase-feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-tag {
+  color: #10b981;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+  background: rgba(16, 185, 129, 0.08);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.feature-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: #0f1115;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.feature-desc {
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.showcase-simulator-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.mock-island {
+  background: #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  position: relative;
+  border-radius: 32px;
+}
+
+/* Indicators */
+.showcase-dots {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  z-index: 1;
+}
+
+.showcase-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 17, 21, 0.1);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.showcase-dots .dot.active {
+  background: #0f1115;
+  width: 24px;
+  border-radius: 100px;
+}
+
+/* Simulator Internals (Same as before but cleaned up) */
+.mock-search-ui {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.mock-input-sim {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+
+.cursor-blink {
+  width: 2px;
+  height: 20px;
+  background: #4290F5;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.mock-loader {
+  animation: rotate 0.8s linear infinite;
+  color: #10b981;
+  filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.6));
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.mock-interactive-ui {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.mock-response-text {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.mock-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.mock-option-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 16px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: white;
+}
+
+.mock-opt-img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .showcase-carousel-container {
+    padding: 60px 20px;
+    gap: 40px;
+  }
+  
+  .mock-island {
+    transform: scale(0.85);
+  }
+}
