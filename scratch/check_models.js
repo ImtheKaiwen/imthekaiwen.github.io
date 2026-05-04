@@ -1,6 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
 
-const apiKey = "AIzaSyD0H08UJB2s85TLzD3JkQCaZdlQZMKwlmo";
 const client = new GoogleGenAI({ apiKey });
 
 async function listModels() {

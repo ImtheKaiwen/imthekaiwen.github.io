@@ -196,16 +196,39 @@ export default function DynamicIsland() {
   const highlightElement = useCallback((el, searchTerm) => {
     if (!el || !searchTerm) return;
     
-    const originalHTML = el.innerHTML;
     const regex = new RegExp(`(${searchTerm})`, 'gi');
     
-    // Only wrap the first match to avoid messy DOM
-    el.innerHTML = originalHTML.replace(regex, '<span class="word-highlight">$1</span>');
+    // Safety check: Don't highlight if the element contains other complex elements
+    // or if we've already highlighted it.
+    if (el.querySelector('.word-highlight')) return;
 
-    setTimeout(() => {
-      // Fade out effect handled by CSS, then restore HTML
-      el.innerHTML = originalHTML;
-    }, 2500);
+    // Recursive function to find and highlight only text nodes
+    const processNode = (node) => {
+      if (node.nodeType === 3) { // Text node
+        const matches = node.nodeValue.match(regex);
+        if (matches) {
+          const span = document.createElement('span');
+          span.innerHTML = node.nodeValue.replace(regex, '<span class="word-highlight">$1</span>');
+          node.parentNode.replaceChild(span, node);
+          return true;
+        }
+      } else if (node.nodeType === 1 && node.childNodes && !['SCRIPT', 'STYLE', 'SVG'].includes(node.nodeName)) {
+        for (let i = 0; i < node.childNodes.length; i++) {
+          if (processNode(node.childNodes[i])) return true; // Only highlight first match
+        }
+      }
+      return false;
+    };
+
+    const originalContent = el.innerHTML;
+    const found = processNode(el);
+
+    if (found) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => {
+        el.innerHTML = originalContent; // Restore to original to clean up the temporary spans
+      }, 2500);
+    }
   }, []);
 
   // Global Search Param Handler
@@ -214,7 +237,7 @@ export default function DynamicIsland() {
     const searchTerm = params.get('search');
     if (searchTerm) {
       setTimeout(() => {
-        const pageElements = document.querySelectorAll('h1, h2, h3, p, span, b, li, a');
+        const pageElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, b, strong, li, a, button');
         for (const el of pageElements) {
           if (el.textContent.toLowerCase().includes(searchTerm.toLowerCase())) {
             highlightElement(el, searchTerm);
@@ -258,9 +281,9 @@ export default function DynamicIsland() {
 
     // --- 2. PRIORITY: IN-PAGE SEARCH ---
     if (q.length > 2) {
-      const pageElements = document.querySelectorAll('h1, h2, h3, p, span, b, li, a');
+      const pageElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, b, strong, li, a, button');
       for (const el of pageElements) {
-        if (el.closest('.dynamic-island') || el.children.length > 5) continue;
+        if (el.closest('.dynamic-island') || el.children.length > 10) continue;
         if (el.textContent.toLowerCase().includes(q)) {
           setSearchQuery('');
           highlightElement(el, query);
@@ -278,10 +301,10 @@ export default function DynamicIsland() {
 
     // Extract page content (excluding the island itself)
     const contentEl = document.querySelector('main') || document.querySelector('.app-container') || document.body;
-    const pageContent = Array.from(contentEl.querySelectorAll('h1, h2, h3, p, li'))
+    const pageContent = Array.from(contentEl.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, a, button, span'))
       .map(el => el.innerText)
       .join(' ')
-      .substring(0, 2000);
+      .substring(0, 3000);
 
     const result = await askAI(query, location.pathname, pageContent);
     setIsAiLoading(false);
@@ -353,7 +376,13 @@ export default function DynamicIsland() {
       >
         <AnimatePresence mode="popLayout">
           {(state.mode === 'default' || !state.mode) && (
-            <div key="default" className="island-state-wrapper island-default">
+            <motion.div 
+              key="default" 
+              className="island-state-wrapper island-default"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.15 } }}
+            >
               <div className="island-left-group">
                 {isProjectPage ? (
                   <div className="island-back-btn" onClick={() => navigate('/')}>
@@ -368,7 +397,11 @@ export default function DynamicIsland() {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
-                    src={projectId === 'campus-meal' ? campusMealImg : visionJournalImg} 
+                    src={
+                      projectId === 'campus-meal' ? campusMealImg : 
+                      projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' : 
+                      visionJournalImg
+                    } 
                     className="island-sticky-icon" 
                     alt="Project Icon" 
                   />
@@ -407,7 +440,7 @@ export default function DynamicIsland() {
                 })}
               </div>
               <div className="island-search-trigger" onClick={showSearch}><Search size={18} color="white" /></div>
-            </div>
+            </motion.div>
           )}
 
           {state.mode === 'search' && (
