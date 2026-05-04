@@ -305,11 +305,12 @@
 
 /* Utility */
 .word-highlight {
-  background: rgba(16, 185, 129, 0.2);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1);
-  border-radius: 4px;
-  padding: 2px 0;
-  transition: all 0.5s ease;
+  background: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 2px 0 #10b981; /* Underline effect that doesn't shift layout */
+  border-radius: 2px;
+  padding: 0;
+  margin: 0;
+  transition: background 0.3s ease;
 }
 
 .custom-spinner {

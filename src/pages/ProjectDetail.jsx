@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { useParams, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
 import { useDynamicIsland } from '../context/DynamicIslandContext';
 import campusMealImg from '../assets/campusmeal.png';
 import visionJournalImg from '../assets/visionjournal.png';
@@ -31,12 +31,37 @@ const projectData = {
     themeGradient: 'linear-gradient(135deg, #2a2a2a, #000000)',
     screenshots: [2, 3, 4, 5, 6, 7, 8, 9].map(n => `/project-imgs/vision-journal/${n}.png`),
     features: [
-      { icon: 'fas fa-book-open', title: 'Günlük', value: 'Sınırsız' },
-      { icon: 'fas fa-eye', title: 'Vizyon', value: 'Hedefler' }
+      { icon: 'fas fa-book-open', title: 'Derin Odak', value: 'Zihnini Özgür Bırak' },
+      { icon: 'fas fa-eye', title: 'Büyük Resim', value: 'Geleceğini Tasarla' }
     ],
     universities: [],
     appStore: 'https://apps.apple.com/us/app/vision-journal-hedef-takibi/id6762062493',
     googlePlay: 'https://play.google.com/store/apps/details?id=com.visionjournal',
+    contact: 'kaiwen.info@gmail.com'
+  },
+  'vision-journal-desktop': {
+    title: 'Vision Journal Desktop',
+    img: '/vision_journal_desktop.jpg',
+    subtitle: 'Masaüstü için optimize edilmiş vizyon ve günlük uygulaması',
+    themeColor: '#0A0A0A',
+    themeGradient: 'linear-gradient(135deg, #1a1a1a, #050505)',
+    screenshots: [
+      'Ekran görüntüsü 2026-05-04 191618.png',
+      'Ekran görüntüsü 2026-05-04 191625.png',
+      'Ekran görüntüsü 2026-05-04 191637.png',
+      'Ekran görüntüsü 2026-05-04 191646.png',
+      'Ekran görüntüsü 2026-05-04 191702.png',
+      'Ekran görüntüsü 2026-05-04 193058.png',
+      'Ekran görüntüsü 2026-05-04 193155.png',
+      'Ekran görüntüsü 2026-05-04 193218.png'
+    ].map(name => `/project-imgs/vision-journal-desktop/${name}`),
+    features: [
+      { icon: 'fas fa-desktop', title: 'Desktop First', value: 'Büyük Ekran Deneyimi' },
+      { icon: 'fas fa-bolt', title: 'Hızlı Erişim', value: 'Her An Elinin Altında' },
+      { icon: 'fas fa-shield-alt', title: 'Gizlilik', value: 'Veriler Yerelde Saklanır' }
+    ],
+    universities: [],
+    downloadUrl: 'https://github.com/ImtheKaiwen/vision_journal_desktop/releases/download/v1.0.3/Vision-Journal-Setup-1.0.3.exe',
     contact: 'kaiwen.info@gmail.com'
   }
 };
@@ -87,33 +112,41 @@ export default function ProjectDetail() {
     let throttleTimer = false;
 
     const handleScroll = () => {
-      if (throttleTimer || isAutoScrolling.current || window.isNavigating) return;
+      if (throttleTimer || isAutoScrolling.current) return;
       
       throttleTimer = true;
-      setTimeout(() => { throttleTimer = false; }, 30); // Reduced from 100ms to 30ms
+      setTimeout(() => { throttleTimer = false; }, 100);
 
-      const scrollPos = window.scrollY + 200;
+      const scrollPos = window.scrollY + 250;
       const scrollBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
 
+      let currentSection = '';
       if (scrollBottom) {
-        if (location.hash !== '#contact') navigate('#contact', { replace: true });
-        return;
+        currentSection = 'contact';
+      } else {
+        for (const section of sections) {
+          const el = document.getElementById(section);
+          if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
+            currentSection = section;
+            break;
+          }
+        }
       }
 
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
-          if (location.hash !== `#${section}`) {
-            navigate(`#${section}`, { replace: true });
-          }
-          break;
-        }
+      if (currentSection && !location.hash.includes(`#${currentSection}`)) {
+        // HashRouter compatible silent update
+        const currentHash = window.location.hash; // e.g. #/project/id#about
+        const baseRoute = currentHash.split('#')[1] || ''; // /project/id
+        const cleanRoute = baseRoute.split('#')[0]; // /project/id
+        
+        window.history.replaceState(null, '', `#${cleanRoute}#${currentSection}`);
+        window.dispatchEvent(new HashChangeEvent('hashchange'));
       }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.hash, navigate]);
+  }, [location.hash]);
 
   if (!project) return <Navigate to="/projects" />;
 
@@ -132,6 +165,10 @@ export default function ProjectDetail() {
     if (action === 'googleplay') {
       showMessage("Google Play'e Yönlendiriliyor...", <i className="fab fa-google-play"></i>, 2000);
       window.open(project.googlePlay, '_blank');
+    }
+    if (action === 'download') {
+      showMessage("İndirme sayfasına yönlendiriliyor...", <i className="fas fa-download"></i>, 2000);
+      window.open(project.downloadUrl, '_blank');
     }
     if (action === 'mail') {
       showMessage("E-posta uygulaması açılıyor...", <i className="fas fa-envelope"></i>, 2000);
@@ -176,6 +213,11 @@ export default function ProjectDetail() {
                 <i className="fab fa-google-play"></i> Google Play
               </button>
             )}
+            {project.downloadUrl && (
+              <button className="download-btn download" onClick={() => handleIslandAction('download')}>
+                <i className="fas fa-download"></i> Hemen İndir
+              </button>
+            )}
           </div>
 
           <div className="features">
@@ -199,7 +241,12 @@ export default function ProjectDetail() {
               <button className="arrow" onClick={() => scrollPictures('left')} aria-label="Sola kaydır"><i className="fas fa-chevron-left"></i></button>
               <div className="app-pictures" ref={scrollRef}>
                 {project.screenshots.map((src, i) => (
-                  <img key={i} className="picture" src={src} alt={`${project.title} screenshot ${i + 1}`} />
+                  <img 
+                    key={i} 
+                    className={`picture ${id.includes('desktop') ? 'desktop-picture' : ''}`} 
+                    src={src} 
+                    alt={`${project.title} screenshot ${i + 1}`} 
+                  />
                 ))}
               </div>
               <button className="arrow" onClick={() => scrollPictures('right')} aria-label="Sağa kaydır"><i className="fas fa-chevron-right"></i></button>
@@ -242,12 +289,24 @@ export default function ProjectDetail() {
           </div>
           <div className="info-box">
             <h1>Linkler</h1>
-            <button className="footer-link-btn" onClick={() => handleIslandAction('appstore')}>
-              <i className="fab fa-apple"></i> App Store
-            </button>
-            <button className="footer-link-btn" onClick={() => handleIslandAction('googleplay')}>
-              <i className="fab fa-google-play"></i> Google Play
-            </button>
+            {project.appStore && (
+              <button className="footer-link-btn" onClick={() => handleIslandAction('appstore')}>
+                <i className="fab fa-apple"></i> App Store
+              </button>
+            )}
+            {project.googlePlay && (
+              <button className="footer-link-btn" onClick={() => handleIslandAction('googleplay')}>
+                <i className="fab fa-google-play"></i> Google Play
+              </button>
+            )}
+            {project.downloadUrl && (
+              <button className="footer-link-btn" onClick={() => handleIslandAction('download')}>
+                <i className="fas fa-download"></i> İndir
+              </button>
+            )}
+            <Link to={`/privacy/${id}`} className="footer-link-btn">
+              <i className="fas fa-shield-alt"></i> Gizlilik Politikası
+            </Link>
           </div>
         </div>
       </footer>

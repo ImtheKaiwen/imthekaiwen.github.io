@@ -90,13 +90,27 @@
 }
 
 .googleplay {
-    background-color: #333;
-    color: white;
+    background-color: white;
+    color: #0f1115;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .googleplay:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background-color: #f8fafc;
+}
+
+.download {
+    background-color: #0f1115;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.download:hover {
+    transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: #000;
 }
 
 /* Features */
@@ -106,7 +120,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin-top: 50px;
     gap: 30px;
     flex-wrap: wrap;
@@ -114,7 +128,7 @@
 
 .feature-card {
     width: 250px;
-    min-height: 200px;
+    height: auto;
     padding: 30px 20px;
     display: flex;
     flex-direction: column;
@@ -155,16 +169,20 @@
 }
 
 .feature-card h3 {
-    font-size: 16px;
-    color: #666;
-    font-weight: 500;
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .feature-card h1 {
-    font-size: 48px;
-    color: var(--theme-color, #4290F5);
-    font-weight: 700;
-    margin-top: 10px;
+    font-size: clamp(24px, 3vw, 32px);
+    color: var(--theme-color, #0f1115);
+    font-weight: 800;
+    margin-top: 15px;
+    line-height: 1.2;
+    text-align: center;
 }
 
 /* app view */
@@ -236,6 +254,20 @@
 
 .picture:hover {
     transform: scale(1.02);
+}
+
+.desktop-picture {
+    width: 600px;
+    min-width: 600px;
+    height: 350px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    object-fit: contain;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.desktop-picture:hover {
+    transform: scale(1.01);
 }
 
 .arrow {
@@ -447,8 +479,8 @@ footer {
     }
 
     .top-info {
-        padding: 20px 10px;
-        margin-top: 10px;
+        padding: 40px 10px;
+        margin-top: 100px; /* Space for island */
     }
 
     .logo {
@@ -462,8 +494,6 @@ footer {
         min-width: unset;
     }
 
-
-
     .features {
         gap: 15px;
         margin-top: 30px;
@@ -476,7 +506,7 @@ footer {
     }
 
     .feature-card h1 {
-        font-size: 32px;
+        font-size: 24px;
     }
 
     .app-view {
@@ -503,9 +533,9 @@ footer {
     }
 
     .picture {
-        width: 140px;
-        min-width: 140px;
-        height: 300px;
+        width: 160px;
+        min-width: 160px;
+        height: 350px;
         scroll-snap-align: center;
         border-radius: 12px;
     }
@@ -529,13 +559,13 @@ footer {
         text-align: center;
         border-radius: 20px;
         padding: 40px 20px;
-        gap: 30px;
+        gap: 40px;
     }
 
     .info-side {
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: 40px;
     }
     
     .info-box {

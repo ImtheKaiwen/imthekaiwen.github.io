@@ -1,0 +1,127 @@
+/* PrivacyPolicy.css */
+.privacy-container {
+  max-width: 800px;
+  margin: 120px auto 80px;
+  padding: 0 24px;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #0f1115;
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.privacy-icon-box {
+  width: 64px;
+  height: 64px;
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.privacy-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f1115;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.last-updated {
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.privacy-content-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 32px;
+  padding: 60px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+}
+
+.privacy-intro {
+  font-size: 1.15rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 40px;
+}
+
+.privacy-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.policy-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0f1115;
+}
+
+.item-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.policy-item p {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.privacy-page-footer {
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #f1f5f9;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.privacy-page-footer strong {
+  color: #0f1115;
+}
+
+@media (max-width: 768px) {
+  .privacy-container {
+    margin-top: 100px;
+  }
+  
+  .privacy-content-card {
+    padding: 30px 20px;
+  }
+  
+  .privacy-header h1 {
+    font-size: 2rem;
+  }
+}
