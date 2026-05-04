@@ -401,13 +401,134 @@
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 40px;
+/* Responsive Styles Refined */
+@media (max-width: 1024px) {
+  .skills-container {
+    gap: 60px;
   }
-  .footer-links-grid {
-    gap: 40px;
+  .expertise-cards {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 968px) {
+  .hero-section {
+    padding: 60px 20px 80px;
+  }
+  
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .skills-info {
+    text-align: center;
+  }
+
+  .education-mini-card {
+    justify-content: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+
+  .profile-img-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 48px;
+  }
+
+  .profile-img {
+    border-radius: 44px;
+  }
+
+  .expertise-grid {
+    padding: 80px 20px;
+    border-radius: 40px 40px 0 0;
+  }
+
+  .expertise-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .expertise-card {
+    padding: 30px;
+  }
+
+  .skills-section {
+    padding: 80px 20px;
+  }
+
+  .skills-groups {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .skill-group {
+    padding: 24px;
+  }
+
+  .contact-card {
+    padding: 60px 20px;
+    border-radius: 40px;
+  }
+
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+
+  .home-footer {
+    padding: 60px 20px 40px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .footer-links-grid {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-link, .footer-link-btn {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
