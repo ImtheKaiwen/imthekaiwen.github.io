@@ -29,7 +29,7 @@ export default function Home() {
 
     const hasSeenWelcome = sessionStorage.getItem('hasSeenWelcome');
     if (!hasSeenWelcome) {
-      showMessage("Kerem Keskinoğlu'nun Dünyasına Hoş Geldiniz!", <Sparkles size={18} />, 3000);
+      showMessage("Portfolyoma Hoş Geldiniz!", <Sparkles size={18} />, 3000);
       sessionStorage.setItem('hasSeenWelcome', 'true');
     }
   }, [showMessage, setNavLinks, setLeftAction]);
@@ -50,7 +50,7 @@ export default function Home() {
 
         <motion.div className="hero-content" variants={itemVariants}>
           <div className="hero-badge">
-            
+
             <span>Yazılım Mühendisliği Öğrencisi</span>
           </div>
           <h1 className="hero-title">
@@ -106,8 +106,8 @@ export default function Home() {
               color: "#8b5cf6"
             }
           ].map((exp, i) => (
-            <motion.div 
-              className="expertise-card" 
+            <motion.div
+              className="expertise-card"
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -194,7 +194,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
           <p>© 2026 Kerem Keskinoğlu. Tüm hakları saklıdır.</p>
         </div>
