@@ -66,6 +66,127 @@ const projectData = {
   }
 };
 
+const SmartScreenSimulation = () => {
+  const [stage, setStage] = React.useState('initial');
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setStage(prev => {
+        if (prev === 'initial') return 'expanded';
+        if (prev === 'expanded') return 'clicked';
+        if (prev === 'clicked') return 'loading';
+        if (prev === 'loading') return 'success';
+        return 'initial';
+      });
+    }, stage === 'loading' ? 2000 : 2500);
+    return () => clearInterval(timer);
+  }, [stage]);
+
+  return (
+    <div className="ss-window">
+      <motion.div 
+        className="ss-container"
+        animate={{ 
+          backgroundColor: stage === 'success' ? '#4ade80' : (stage === 'loading' ? '#ffffff' : '#0078d7'),
+        }}
+        transition={{ duration: 0.5 }}
+      >
+        {stage === 'initial' || stage === 'expanded' || stage === 'clicked' ? (
+          <div className="ss-dialog">
+            <div className="ss-header">Windows protected your PC</div>
+            
+            <div className="ss-body">
+              <p className="ss-text-small">Microsoft Defender SmartScreen prevented an unrecognized app from starting...</p>
+              
+              <motion.span 
+                className={`ss-more-info ${stage !== 'initial' ? 'hidden' : ''}`}
+                animate={{ opacity: stage === 'initial' ? 1 : 0 }}
+              >
+                More info
+              </motion.span>
+
+              <motion.div 
+                className="ss-expanded-info"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ 
+                  height: stage === 'initial' ? 0 : 'auto',
+                  opacity: stage === 'initial' ? 0 : 1 
+                }}
+              >
+                <p className="ss-text-extra">App: Vision_Journal.exe</p>
+                <p className="ss-text-extra">Publisher: Unknown publisher</p>
+              </motion.div>
+            </div>
+
+            <div className="ss-footer-actions">
+              {stage !== 'initial' && (
+                <motion.button 
+                  className="ss-run-anyway active"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: 1,
+                    scale: stage === 'clicked' ? 0.9 : 1,
+                    backgroundColor: stage === 'clicked' ? '#e1e1e1' : '#ffffff'
+                  }}
+                >
+                  Run anyway
+                </motion.button>
+              )}
+              <button className="ss-dont-run">Don't run</button>
+            </div>
+          </div>
+        ) : null}
+
+        {stage === 'loading' && (
+          <div className="ss-loading-view">
+            <div className="ss-progress-container">
+              <motion.div 
+                className="ss-progress-bar"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 2, ease: "easeInOut" }}
+              />
+            </div>
+            <p>Kuruluyor...</p>
+          </div>
+        )}
+
+        {stage === 'success' && (
+          <motion.div 
+            className="ss-success-view"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <motion.div 
+              className="ss-check-icon-wrapper"
+              initial={{ scale: 0.5, rotate: -45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              <i className="fas fa-check"></i>
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* Cursor Simulation */}
+        {(stage === 'initial' || stage === 'expanded') && (
+          <motion.div 
+            className="ss-cursor"
+            initial={{ x: 200, y: 150 }}
+            animate={stage === 'initial' ? { x: 50, y: 110 } : { x: 180, y: 240 }}
+            transition={{ duration: 0.8, ease: "circOut" }}
+          >
+            <motion.div 
+              className="cursor-arrow"
+              animate={stage === 'clicked' ? { scale: 0.8 } : { scale: 1 }}
+            />
+          </motion.div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
 export default function ProjectDetail() {
   const { id } = useParams();
   const location = useLocation();
@@ -214,9 +335,33 @@ export default function ProjectDetail() {
               </button>
             )}
             {project.downloadUrl && (
-              <button className="download-btn download" onClick={() => handleIslandAction('download')}>
-                <i className="fas fa-download"></i> Hemen İndir
-              </button>
+              <div className="download-section">
+                <button className="download-btn download" onClick={() => handleIslandAction('download')}>
+                  <i className="fas fa-download"></i> Hemen İndir (Windows .exe)
+                </button>
+                
+                <div className="security-notice">
+                  <div className="security-main">
+                    <div className="security-text">
+                      <div className="security-header">
+                        <i className="fas fa-shield-alt"></i>
+                        <h4>Güvenlik ve Kurulum Notu</h4>
+                      </div>
+                      <p>
+                        Uygulama henüz yeni olduğu için Windows <strong>"SmartScreen"</strong> uyarısı verebilir. 
+                      </p>
+                      <div className="security-steps">
+                        <div className="step-item">1. <span>Ek Bilgi</span>'ye tıklayın.</div>
+                        <div className="step-item">2. <span>Yine de Çalıştır</span>'a tıklayın.</div>
+                      </div>
+                    </div>
+                    
+                    <div className="security-simulation">
+                      <SmartScreenSimulation />
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
 
