@@ -84,33 +84,36 @@ const SmartScreenSimulation = () => {
 
   return (
     <div className="ss-window">
-      <motion.div 
+      <motion.div
         className="ss-container"
-        animate={{ 
+        animate={{
           backgroundColor: stage === 'success' ? '#4ade80' : (stage === 'loading' ? '#ffffff' : '#0078d7'),
+          borderColor: stage === 'success' ? '#4ade80' : 'rgba(255, 255, 255, 0.1)',
+          boxShadow: stage === 'success' ? '0 0 30px rgba(74, 222, 128, 0.4)' : '0 20px 40px rgba(0, 90, 158, 0.15)'
         }}
         transition={{ duration: 0.5 }}
+        style={{ border: '1px solid transparent', borderRadius: '12px' }}
       >
         {stage === 'initial' || stage === 'expanded' || stage === 'clicked' ? (
           <div className="ss-dialog">
             <div className="ss-header">Windows protected your PC</div>
-            
+
             <div className="ss-body">
               <p className="ss-text-small">Microsoft Defender SmartScreen prevented an unrecognized app from starting...</p>
-              
-              <motion.span 
+
+              <motion.span
                 className={`ss-more-info ${stage !== 'initial' ? 'hidden' : ''}`}
                 animate={{ opacity: stage === 'initial' ? 1 : 0 }}
               >
                 More info
               </motion.span>
 
-              <motion.div 
+              <motion.div
                 className="ss-expanded-info"
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ 
+                animate={{
                   height: stage === 'initial' ? 0 : 'auto',
-                  opacity: stage === 'initial' ? 0 : 1 
+                  opacity: stage === 'initial' ? 0 : 1
                 }}
               >
                 <p className="ss-text-extra">App: Vision_Journal.exe</p>
@@ -120,10 +123,10 @@ const SmartScreenSimulation = () => {
 
             <div className="ss-footer-actions">
               {stage !== 'initial' && (
-                <motion.button 
+                <motion.button
                   className="ss-run-anyway active"
                   initial={{ opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     opacity: 1,
                     scale: stage === 'clicked' ? 0.9 : 1,
                     backgroundColor: stage === 'clicked' ? '#e1e1e1' : '#ffffff'
@@ -140,7 +143,7 @@ const SmartScreenSimulation = () => {
         {stage === 'loading' && (
           <div className="ss-loading-view">
             <div className="ss-progress-container">
-              <motion.div 
+              <motion.div
                 className="ss-progress-bar"
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
@@ -152,12 +155,12 @@ const SmartScreenSimulation = () => {
         )}
 
         {stage === 'success' && (
-          <motion.div 
+          <motion.div
             className="ss-success-view"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <motion.div 
+            <motion.div
               className="ss-check-icon-wrapper"
               initial={{ scale: 0.5, rotate: -45 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -170,13 +173,13 @@ const SmartScreenSimulation = () => {
 
         {/* Cursor Simulation */}
         {(stage === 'initial' || stage === 'expanded') && (
-          <motion.div 
+          <motion.div
             className="ss-cursor"
             initial={{ x: 200, y: 150 }}
             animate={stage === 'initial' ? { x: 50, y: 110 } : { x: 180, y: 240 }}
             transition={{ duration: 0.8, ease: "circOut" }}
           >
-            <motion.div 
+            <motion.div
               className="cursor-arrow"
               animate={stage === 'clicked' ? { scale: 0.8 } : { scale: 1 }}
             />
@@ -194,7 +197,7 @@ export default function ProjectDetail() {
   const { setNavLinks, setLeftAction, showMessage } = useDynamicIsland();
   const scrollRef = useRef(null);
   const project = projectData[id];
-  
+
   useEffect(() => {
     if (project) {
       setNavLinks([
@@ -213,12 +216,12 @@ export default function ProjectDetail() {
       isAutoScrolling.current = true;
       const hash = location.hash.replace('#', '');
       const el = document.getElementById(hash);
-      
+
       if (el) {
         const offset = 110;
         const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
         window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
-        
+
         // Unlock after a while
         const timer = setTimeout(() => {
           isAutoScrolling.current = false;
@@ -234,7 +237,7 @@ export default function ProjectDetail() {
 
     const handleScroll = () => {
       if (throttleTimer || isAutoScrolling.current) return;
-      
+
       throttleTimer = true;
       setTimeout(() => { throttleTimer = false; }, 100);
 
@@ -259,7 +262,7 @@ export default function ProjectDetail() {
         const currentHash = window.location.hash; // e.g. #/project/id#about
         const baseRoute = currentHash.split('#')[1] || ''; // /project/id
         const cleanRoute = baseRoute.split('#')[0]; // /project/id
-        
+
         window.history.replaceState(null, '', `#${cleanRoute}#${currentSection}`);
         window.dispatchEvent(new HashChangeEvent('hashchange'));
       }
@@ -273,7 +276,9 @@ export default function ProjectDetail() {
 
   const scrollPictures = (direction) => {
     if (scrollRef.current) {
-      const amount = direction === 'left' ? -300 : 300;
+      // Masaüstü projeleri için daha fazla kaydır (resim genişliği + gap)
+      const scrollAmount = id.includes('desktop') ? 620 : 300;
+      const amount = direction === 'left' ? -scrollAmount : scrollAmount;
       scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
     }
   };
@@ -302,7 +307,7 @@ export default function ProjectDetail() {
   };
 
   return (
-    <motion.div 
+    <motion.div
       className="project-detail-wrapper"
       style={{
         '--theme-color': project.themeColor,
@@ -315,11 +320,11 @@ export default function ProjectDetail() {
     >
       <main>
         <section className="top-info" id="about">
-          <motion.img 
+          <motion.img
             layoutId={`app-icon-${id}`}
-            src={project.img} 
-            alt={`${project.title} logo`} 
-            className="logo" 
+            src={project.img}
+            alt={`${project.title} logo`}
+            className="logo"
           />
           <h1>{project.title}</h1>
           <p>{project.subtitle}</p>
@@ -339,7 +344,7 @@ export default function ProjectDetail() {
                 <button className="download-btn download" onClick={() => handleIslandAction('download')}>
                   <i className="fas fa-download"></i> Hemen İndir (Windows .exe)
                 </button>
-                
+
                 <div className="security-notice">
                   <div className="security-main">
                     <div className="security-text">
@@ -348,14 +353,14 @@ export default function ProjectDetail() {
                         <h4>Güvenlik ve Kurulum Notu</h4>
                       </div>
                       <p>
-                        Uygulama henüz yeni olduğu için Windows <strong>"SmartScreen"</strong> uyarısı verebilir. 
+                        Uygulama henüz yeni olduğu için Windows <strong>"SmartScreen"</strong> uyarısı verebilir.
                       </p>
                       <div className="security-steps">
                         <div className="step-item">1. <span>Ek Bilgi</span>'ye tıklayın.</div>
                         <div className="step-item">2. <span>Yine de Çalıştır</span>'a tıklayın.</div>
                       </div>
                     </div>
-                    
+
                     <div className="security-simulation">
                       <SmartScreenSimulation />
                     </div>
@@ -386,11 +391,11 @@ export default function ProjectDetail() {
               <button className="arrow" onClick={() => scrollPictures('left')} aria-label="Sola kaydır"><i className="fas fa-chevron-left"></i></button>
               <div className="app-pictures" ref={scrollRef}>
                 {project.screenshots.map((src, i) => (
-                  <img 
-                    key={i} 
-                    className={`picture ${id.includes('desktop') ? 'desktop-picture' : ''}`} 
-                    src={src} 
-                    alt={`${project.title} screenshot ${i + 1}`} 
+                  <img
+                    key={i}
+                    className={`picture ${id.includes('desktop') ? 'desktop-picture' : ''}`}
+                    src={src}
+                    alt={`${project.title} screenshot ${i + 1}`}
                   />
                 ))}
               </div>

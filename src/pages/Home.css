@@ -365,7 +365,8 @@
   margin-bottom: 24px;
 }
 
-.footer-link, .footer-link-btn {
+.footer-link,
+.footer-link-btn {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -382,12 +383,14 @@
   font-family: inherit;
 }
 
-.footer-link:hover, .footer-link-btn:hover {
+.footer-link:hover,
+.footer-link-btn:hover {
   color: #4290F5;
   transform: translateX(5px);
 }
 
-.footer-link svg, .footer-link-btn svg {
+.footer-link svg,
+.footer-link-btn svg {
   color: #4290F5;
 }
 
@@ -406,6 +409,7 @@
   .skills-container {
     gap: 60px;
   }
+
   .expertise-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -415,7 +419,7 @@
   .hero-section {
     padding: 60px 20px 80px;
   }
-  
+
   .skills-container {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -508,7 +512,8 @@
     align-items: center;
   }
 
-  .footer-link, .footer-link-btn {
+  .footer-link,
+  .footer-link-btn {
     justify-content: center;
   }
 }
@@ -517,7 +522,7 @@
   .hero-title {
     font-size: 2.8rem;
   }
-  
+
   .hero-actions {
     flex-direction: column;
     width: 100%;
@@ -531,4 +536,4 @@
   .section-title {
     font-size: 2.2rem;
   }
-}
+}
