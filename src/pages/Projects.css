@@ -218,6 +218,31 @@
     padding: 100px 20px 40px;
   }
 
+  .filter-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 6px;
+    gap: 6px;
+    border-radius: 18px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .filter-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+
   .apps-grid {
     grid-template-columns: 1fr;
     gap: 24px;
