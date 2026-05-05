@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDynamicIsland } from '../context/DynamicIslandContext';
 import visionJournalImg from '../assets/visionjournal.png';
 import campusMealImg from '../assets/campusmeal.png';
-import { Layers, Terminal, Cpu, Code, Gamepad2, Eye, BookOpen, Monitor, Smartphone, LayoutGrid } from 'lucide-react';
+import { Layers, Terminal, Cpu, Code, Gamepad2, Eye, BookOpen, Monitor, Smartphone, LayoutGrid, Globe } from 'lucide-react';
 import './Projects.css';
 
 const APPS = [
@@ -28,6 +28,14 @@ const APPS = [
     desc: 'Masaüstü için geliştirilmiş, odaklanma odaklı vizyon ve günlük uygulaması.',
     img: '/vision_journal_desktop.jpg',
     type: 'desktop'
+  },
+  {
+    id: 'kaivertion',
+    title: 'Kaivertion',
+    desc: 'PDF-Word dönüşümü, resim işleme ve QR kod araçları sunan kapsamlı web platformu.',
+    img: '/kaivertion.jpg',
+    type: 'web',
+    url: 'https://kaivertion.onrender.com/'
   }
 ];
 
@@ -77,6 +85,13 @@ export default function Projects() {
           <Monitor size={18} />
           Masaüstü
         </button>
+        <button 
+          className={`filter-btn ${filter === 'web' ? 'active' : ''}`} 
+          onClick={() => setFilter('web')}
+        >
+          <Globe size={18} />
+          Web
+        </button>
       </div>
 
       <motion.div className="apps-grid" layout>
@@ -91,16 +106,29 @@ export default function Projects() {
               transition={{ duration: 0.2 }}
               style={{ display: 'flex', height: '100%' }}
             >
-              <Link to={`/project/${app.id}`} className="app-card">
-                <motion.img
-                  layoutId={`app-icon-${app.id}`}
-                  src={app.img}
-                  alt={app.title}
-                  className="app-icon"
-                />
-                <h2 className="app-title">{app.title}</h2>
-                <p className="app-desc">{app.desc}</p>
-              </Link>
+              {app.url ? (
+                <a href={app.url} target="_blank" rel="noopener noreferrer" className="app-card">
+                  <motion.img
+                    layoutId={`app-icon-${app.id}`}
+                    src={app.img}
+                    alt={app.title}
+                    className="app-icon"
+                  />
+                  <h2 className="app-title">{app.title}</h2>
+                  <p className="app-desc">{app.desc}</p>
+                </a>
+              ) : (
+                <Link to={`/project/${app.id}`} className="app-card">
+                  <motion.img
+                    layoutId={`app-icon-${app.id}`}
+                    src={app.img}
+                    alt={app.title}
+                    className="app-icon"
+                  />
+                  <h2 className="app-title">{app.title}</h2>
+                  <p className="app-desc">{app.desc}</p>
+                </Link>
+              )}
             </motion.div>
           ))}
         </AnimatePresence>
