@@ -8,6 +8,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import Proposal from './pages/Proposal';
 import DynamicIsland from './components/DynamicIsland/DynamicIsland';
 
 function AnimatedRoutes() {
@@ -45,7 +46,7 @@ function AnimatedRoutes() {
     } else if (location.pathname.includes('campus-meal')) {
       updateFavicon('./campus-icon.png', true);
     } else {
-      updateFavicon('./favicon.jpeg', true); // Make PP circular
+      updateFavicon('./logo.jpg', true); // Make PP circular
     }
   }, [location.pathname]);
 
@@ -58,6 +59,7 @@ function AnimatedRoutes() {
           <Route path="projects" element={<Projects />} />
           <Route path="project/:id" element={<ProjectDetail />} />
           <Route path="privacy/:id" element={<PrivacyPolicy />} />
+          <Route path="proposal" element={<Proposal />} />
         </Route>
       </Routes>
     </AnimatePresence>

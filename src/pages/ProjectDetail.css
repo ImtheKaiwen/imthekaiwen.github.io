@@ -60,12 +60,15 @@
 }
 
 .download-btn {
-    min-width: 160px; /* 200'den 160'a düşürüldü */
-    height: 54px;   /* 60'tan 54'e düşürüldü */
+    min-width: 160px;
+    /* 200'den 160'a düşürüldü */
+    height: 54px;
+    /* 60'tan 54'e düşürüldü */
     padding: 0 24px;
     border-radius: 50px;
     border: none;
-    font-size: 15px; /* Daha zarif bir boyut */
+    font-size: 15px;
+    /* Daha zarif bir boyut */
     font-weight: 600;
     color: white;
     cursor: pointer;
@@ -232,10 +235,12 @@
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
-    overflow-x: auto; /* Değişti: Kaydırma çubuğu aktif ama gizli */
+    overflow-x: auto;
+    /* Değişti: Kaydırma çubuğu aktif ama gizli */
     scroll-behavior: smooth;
     padding: 20px 0;
-    scroll-snap-type: x mandatory; /* Mıknatıs özelliği */
+    scroll-snap-type: x mandatory;
+    /* Mıknatıs özelliği */
 }
 
 .app-pictures::-webkit-scrollbar {
@@ -251,7 +256,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     flex-shrink: 0;
-    scroll-snap-align: center; /* Merkeze kilitle */
+    scroll-snap-align: center;
+    /* Merkeze kilitle */
 }
 
 .picture:hover {
@@ -479,7 +485,8 @@ footer {
 .download-section {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Butonu ortala ve genişliğini içeriğe göre ayarla */
+    align-items: center;
+    /* Butonu ortala ve genişliğini içeriğe göre ayarla */
     gap: 20px;
     margin-top: 10px;
     width: 100%;

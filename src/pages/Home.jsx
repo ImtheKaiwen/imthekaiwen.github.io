@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDynamicIsland } from '../context/DynamicIslandContext';
 import { motion } from 'framer-motion';
 import { Sparkles, Code2, Monitor, Globe, Database, BrainCircuit, GraduationCap, Mail, Phone, MapPin, ExternalLink, ChevronRight } from 'lucide-react';
-import pp from '../assets/pp.jpeg';
+import pp from '../assets/logo.jpg';
 import './Home.css';
 
 const containerVariants = {
@@ -23,7 +23,8 @@ export default function Home() {
   useEffect(() => {
     setNavLinks([
       { path: '/', label: 'Home' },
-      { path: '/projects', label: 'Projects' }
+      { path: '/projects', label: 'Projects' },
+      { path: '/proposal', label: 'Proposal' }
     ]);
     setLeftAction('logo');
 
@@ -64,10 +65,8 @@ export default function Home() {
             <button className="cta-button primary" onClick={() => navigate('/projects')}>
               Projelerimi Gör <ChevronRight size={18} />
             </button>
-            <button className="cta-button secondary" onClick={() => {
-              document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-            }}>
-              İletişime Geç
+            <button className="cta-button secondary" onClick={() => navigate('/proposal')}>
+              Teklif Al & Hizmetler
             </button>
           </div>
         </motion.div>
@@ -190,6 +189,9 @@ export default function Home() {
               </a>
               <button onClick={() => navigate('/projects')} className="footer-link-btn">
                 <Monitor size={18} /> Projelerim
+              </button>
+              <button onClick={() => navigate('/proposal')} className="footer-link-btn">
+                <Sparkles size={18} /> Teklif Al & Hizmetler
               </button>
             </div>
           </div>

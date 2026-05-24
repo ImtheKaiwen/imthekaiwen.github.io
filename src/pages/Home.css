@@ -4,6 +4,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  border-radius: 32px;
 }
 
 /* Hero Section Refined */
@@ -26,7 +27,7 @@
   height: 200px;
   border-radius: 60px;
   padding: 8px;
-  background: linear-gradient(135deg, #4290F5 0%, #10b981 100%);
+  background-color: black;
   position: relative;
   box-shadow: 0 30px 60px rgba(66, 144, 245, 0.2);
 }

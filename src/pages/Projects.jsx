@@ -46,7 +46,8 @@ export default function Projects() {
   useEffect(() => {
     setNavLinks([
       { path: '/', label: 'Home' },
-      { path: '/projects', label: 'Projects' }
+      { path: '/projects', label: 'Projects' },
+      { path: '/proposal', label: 'Proposal' }
     ]);
     setLeftAction('logo');
   }, [setNavLinks, setLeftAction]);
