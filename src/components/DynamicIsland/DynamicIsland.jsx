@@ -4,7 +4,7 @@ import { useDynamicIsland } from '../../context/DynamicIslandContext';
 import { Search, Bell, Loader2, X, ArrowLeft, Mail, Bot } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { askAI } from '../../services/aiService';
-import pp from '../../assets/pp.jpeg';
+import pp from '../../assets/logo.jpg';
 import campusMealImg from '../../assets/campusmeal.png';
 import visionJournalImg from '../../assets/visionjournal.png';
 import './DynamicIsland.css';
@@ -18,7 +18,8 @@ const GLOBAL_KEYWORDS = [
   { keywords: ['vision', 'journal', 'günlük', 'duygu', 'analiz', 'vizyon'], path: PROJECT_VISION },
   { keywords: ['proje', 'uygulama', 'portfolio', 'çalışma'], path: '/projects' },
   { keywords: ['hakkında', 'kim', 'özgeçmiş'], path: '/#about' },
-  { keywords: ['iletişim', 'mail', 'ulaş'], path: '#contact' }
+  { keywords: ['iletişim', 'mail', 'ulaş'], path: '#contact' },
+  { keywords: ['teklif', 'fiyat', 'bütçe', 'hizmet', 'hizmetler', 'istek', 'proposal', 'quote', 'offer'], path: '/proposal' }
 ];
 
 const LOCAL_MAP = {
@@ -40,6 +41,12 @@ const LOCAL_MAP = {
   'vision': { action: 'navigate', path: PROJECT_VISION },
   'linkedin': { action: 'options', answerText: 'LinkedIn profilim:', options: [{ id: 'linkedin', label: 'LinkedIn' }] },
   'mail': { action: 'options', answerText: 'E-posta adresim:', options: [{ id: 'mail', label: 'E-posta' }] },
+  'teklif': { action: 'navigate', path: '/proposal' },
+  'teklif al': { action: 'navigate', path: '/proposal' },
+  'hizmet': { action: 'navigate', path: '/proposal' },
+  'hizmetler': { action: 'navigate', path: '/proposal' },
+  'proposal': { action: 'navigate', path: '/proposal' },
+  'quote': { action: 'navigate', path: '/proposal' },
 };
 
 export default function DynamicIsland() {
@@ -73,7 +80,7 @@ export default function DynamicIsland() {
         const rect = logo.getBoundingClientRect();
         const isStuck = rect.top < 60;
         setIsIconSticky(isStuck);
-        
+
         // Direct manipulation for 100% reliability
         logo.style.opacity = isStuck ? '0' : '1';
         logo.style.visibility = isStuck ? 'hidden' : 'visible';
@@ -101,7 +108,8 @@ export default function DynamicIsland() {
     }
     return [
       { path: '/', label: 'Home' },
-      { path: '/projects', label: 'Projects' }
+      { path: '/projects', label: 'Projects' },
+      { path: '/proposal', label: 'Proposal' }
     ];
   }, [isProjectPage, projectId]);
 
@@ -159,12 +167,12 @@ export default function DynamicIsland() {
       handleReset();
     }
     else if (actionData.action === 'contact') {
-      showInteractive({ 
-        answerText: "Bana buradan ulaşabilirsiniz:", 
+      showInteractive({
+        answerText: "Bana buradan ulaşabilirsiniz:",
         options: [
-          { id: 'mail', label: 'E-posta Gönder' }, 
+          { id: 'mail', label: 'E-posta Gönder' },
           { id: 'linkedin', label: 'LinkedIn' }
-        ] 
+        ]
       });
     }
     else if (actionData.action === 'scroll') {
@@ -181,12 +189,12 @@ export default function DynamicIsland() {
       const parts = link.path.split('#');
       const linkPath = parts[0];
       const hash = parts[1];
-      
+
       if (location.pathname === linkPath) {
         e.preventDefault();
         window.isNavigating = true; // Lock ScrollSpy
         navigate(`#${hash}`, { replace: true });
-        
+
         // Safety unlock
         setTimeout(() => { window.isNavigating = false; }, 1200);
       }
@@ -195,9 +203,9 @@ export default function DynamicIsland() {
 
   const highlightElement = useCallback((el, searchTerm) => {
     if (!el || !searchTerm) return;
-    
+
     const regex = new RegExp(`(${searchTerm})`, 'gi');
-    
+
     // Safety check: Don't highlight if the element contains other complex elements
     // or if we've already highlighted it.
     if (el.querySelector('.word-highlight')) return;
@@ -256,13 +264,13 @@ export default function DynamicIsland() {
     if (!query) return;
 
     const q = query.toLowerCase();
-    
+
     // --- 1. PRIORITY: CRITICAL COMMANDS & GLOBAL REDIRECTS ---
     const isHome = q === 'ev' || q === 'ana' || q === 'baş' || q.includes('home') || q.includes('ana sayfa');
-    if (isHome) { 
+    if (isHome) {
       handleReset();
-      executeAction(LOCAL_MAP['anasayfa']); 
-      return; 
+      executeAction(LOCAL_MAP['anasayfa']);
+      return;
     }
 
     // Check for other pages keywords
@@ -310,7 +318,7 @@ export default function DynamicIsland() {
     setIsAiLoading(false);
 
     let finalAction = result.actionData;
-    
+
     // Smart keyword detection if AI forgot action
     if (!finalAction) {
       const text = result.text.toLowerCase();
@@ -334,11 +342,11 @@ export default function DynamicIsland() {
 
   const handleIslandAction = (opt) => {
     const id = opt.id?.toLowerCase() || '';
-    
+
     // 1. Social & External Actions
     if (id === 'mail' || id.includes('posta')) { window.location.href = 'mailto:kaiwen.info@gmail.com'; handleReset(); return; }
     if (id === 'linkedin') { window.open('https://www.linkedin.com/in/kerem-keskino%C4%9Flu-977387299/', '_blank'); handleReset(); return; }
-    
+
     // 2. Navigation Actions
     if (opt.action === 'navigate' || opt.path) {
       navigate(opt.path);
@@ -369,15 +377,15 @@ export default function DynamicIsland() {
 
   return (
     <div className="dynamic-island-container">
-      <motion.div 
+      <motion.div
         layout
-        className={`dynamic-island ${state.mode || 'default'}`} 
+        className={`dynamic-island ${state.mode || 'default'}`}
         transition={{ type: "spring", stiffness: 600, damping: 48, mass: 0.8 }}
       >
         <AnimatePresence mode="popLayout">
           {(state.mode === 'default' || !state.mode) && (
-            <motion.div 
-              key="default" 
+            <motion.div
+              key="default"
               className="island-state-wrapper island-default"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -391,19 +399,19 @@ export default function DynamicIsland() {
                 ) : (
                   <img src={pp} className="island-avatar" alt="Profile" />
                 )}
-                
+
                 {isProjectPage && isIconSticky && (
-                  <motion.img 
+                  <motion.img
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     src={
-                      projectId === 'campus-meal' ? campusMealImg : 
-                      projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' : 
-                      visionJournalImg
-                    } 
-                    className="island-sticky-icon" 
-                    alt="Project Icon" 
+                      projectId === 'campus-meal' ? campusMealImg :
+                        projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' :
+                          visionJournalImg
+                    }
+                    className="island-sticky-icon"
+                    alt="Project Icon"
                   />
                 )}
               </div>
@@ -468,7 +476,7 @@ export default function DynamicIsland() {
           {state.mode === 'interactive' && (
             <motion.div key="interactive" className="island-state-wrapper island-interactive" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }}>
               <button className="island-close-btn absolute" onClick={handleReset}><X size={18} /></button>
-              
+
               <div className="ai-response-container">
                 <p className="ai-response-text">{state.interactiveData?.answerText}</p>
               </div>

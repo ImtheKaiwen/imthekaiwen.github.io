@@ -8,7 +8,8 @@ export default function About() {
   useEffect(() => {
     setNavLinks([
       { path: '/', label: 'Home' },
-      { path: '/projects', label: 'Projects' }
+      { path: '/projects', label: 'Projects' },
+      { path: '/proposal', label: 'Proposal' }
     ]);
     setLeftAction('logo');
   }, [setNavLinks, setLeftAction]);

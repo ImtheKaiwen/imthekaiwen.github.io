@@ -14,7 +14,8 @@ export const DynamicIslandProvider = ({ children }) => {
 
   const [navLinks, setNavLinks] = useState([
     { path: '/', label: 'Home' },
-    { path: '/projects', label: 'Projects' }
+    { path: '/projects', label: 'Projects' },
+    { path: '/proposal', label: 'Proposal' }
   ]);
 
   const [leftAction, setLeftAction] = useState('logo'); // 'logo' or 'back'
