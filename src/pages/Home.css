@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 32px;
+  overflow: hidden;
 }
 
 /* Hero Section Refined */
@@ -155,6 +156,10 @@
 }
 
 .section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   margin-bottom: 80px;
 }
@@ -314,6 +319,8 @@
   background: #f8fafc;
   border-top: 1px solid #f1f5f9;
   color: #0f1115;
+  border-radius: 0 0 32px 32px;
+  margin-top: auto;
 }
 
 .footer-content {

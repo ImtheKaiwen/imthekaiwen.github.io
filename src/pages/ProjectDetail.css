@@ -383,8 +383,7 @@
     font-weight: 600;
 }
 
-/* Footer */
-footer {
+.project-detail-wrapper footer {
     width: 100%;
     max-width: 1400px;
     background-color: #f8f9fa;
@@ -841,7 +840,7 @@ footer {
         padding: 20px;
     }
 
-    footer {
+    .project-detail-wrapper footer {
         flex-direction: column;
         text-align: center;
         border-radius: 20px;
