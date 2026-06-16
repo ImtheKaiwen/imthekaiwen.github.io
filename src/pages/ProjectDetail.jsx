@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useParams, Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
 import { useDynamicIsland } from '../context/DynamicIslandContext';
 import campusMealImg from '../assets/campusmeal.png';
@@ -62,6 +62,22 @@ const projectData = {
     ],
     universities: [],
     downloadUrl: 'https://github.com/ImtheKaiwen/vision_journal_desktop/releases/download/v1.0.3/Vision-Journal-Setup-1.0.3.exe',
+    contact: 'kaiwen.info@gmail.com'
+  },
+  'kause': {
+    title: 'Kause',
+    img: '/kause-icon.png',
+    subtitle: 'Yapay zeka destekli göz kırpma ve duruş takip uygulaması',
+    themeColor: '#0A0A0A',
+    themeGradient: 'linear-gradient(135deg, #1f1f1f, #050505)',
+    screenshots: [],
+    features: [
+      { icon: 'fas fa-eye', title: 'Göz Kırpma', value: 'Akıllı Uyarı' },
+      { icon: 'fas fa-child', title: 'Postür', value: 'Duruş Analizi' },
+      { icon: 'fas fa-users', title: 'Yönetim', value: 'Canlı Ekip Takibi' }
+    ],
+    universities: [],
+    downloadUrl: 'https://github.com/ImtheKaiwen/kause/releases/download/v0.1.0/Kause-Setup-0.1.0.exe',
     contact: 'kaiwen.info@gmail.com'
   }
 };
@@ -186,6 +202,97 @@ const SmartScreenSimulation = () => {
           </motion.div>
         )}
       </motion.div>
+    </div>
+  );
+};
+
+const KauseSloganAnimation = () => {
+  const [phase, setPhase] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setPhase((p) => (p + 1) % 4);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    exit: { opacity: 0, y: -20, filter: 'blur(5px)', transition: { duration: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.9 },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+  };
+
+  return (
+    <div className="kause-slogan-section wider">
+      <AnimatePresence mode="wait">
+        {phase === 0 && (
+          <motion.div key="p0" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Hit</motion.span>
+              <motion.span variants={itemVariants} className="highlight pause">pause</motion.span>
+              <motion.span variants={itemVariants}>on the</motion.span>
+              <motion.span variants={itemVariants} className="highlight cause">causes</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>that break your focus.</motion.span>
+            </div>
+            <div className="slogan-line final-kause">
+              <motion.span variants={itemVariants}>Meet</motion.span>
+              <motion.span variants={itemVariants} className="highlight kause">Kause.</motion.span>
+            </div>
+          </motion.div>
+        )}
+        
+        {phase === 1 && (
+          <motion.div key="p1" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>AI-Powered</motion.span>
+            </div>
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight ai">Eye & Posture Tracking</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Running seamlessly in the background.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 2 && (
+          <motion.div key="p2" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Live</motion.span>
+              <motion.span variants={itemVariants} className="highlight team">Team Analytics</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Elevate your workspace productivity.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 3 && (
+          <motion.div key="p3" className="slogan-content logo-phase" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <motion.img 
+              src="/kause-icon.png" 
+              alt="Kause Logo" 
+              className="kause-animated-logo"
+              initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0, transition: { type: 'spring', damping: 12, stiffness: 100 } }}
+            />
+            <motion.h2 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+               className="kause-logo-text"
+            >
+              Kause
+            </motion.h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -328,6 +435,9 @@ export default function ProjectDetail() {
           />
           <h1>{project.title}</h1>
           <p>{project.subtitle}</p>
+
+          {id === 'kause' && <KauseSloganAnimation />}
+
           <div className="download-btn-container">
             {project.appStore && (
               <button className="download-btn appstore" onClick={() => handleIslandAction('appstore')}>

@@ -862,3 +862,174 @@
         transform: translateY(-3px);
     }
 }
+/* Kause Slogan Animation */
+.kause-slogan-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: var(--theme-gradient);
+  border-radius: 30px;
+  margin: 60px auto;
+  max-width: 1000px;
+  position: relative;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5), 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.slogan-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .slogan-line {
+    font-size: 1.8rem;
+    gap: 8px;
+  }
+  .kause-slogan-section {
+    padding: 50px 15px;
+    margin: 40px 10px;
+  }
+}
+
+.slogan-line span {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.highlight.cause {
+  background: linear-gradient(135deg, #ff6b6b, #ff4757);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.pause {
+  background: linear-gradient(135deg, #feca57, #ff9f43);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.final-kause {
+  margin-top: 20px;
+}
+
+.highlight.kause {
+  background: linear-gradient(135deg, #1dd1a1, #10ac84);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  text-shadow: 0 10px 30px rgba(29, 209, 161, 0.3);
+}
+
+@media (max-width: 768px) {
+  .highlight.kause {
+    font-size: 2.8rem;
+  }
+}
+
+
+/* UPDATED KAUSE SLOGAN ANIMATION */
+.kause-slogan-section.wider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  background: var(--theme-gradient);
+  border-radius: 40px;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 350px;
+  position: relative;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5), 0 20px 50px rgba(0,0,0,0.3);
+}
+
+.slogan-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.slogan-content.logo-phase {
+  gap: 20px;
+}
+
+.slogan-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.slogan-line.text-sm {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .slogan-line {
+    font-size: 2.2rem;
+    gap: 8px;
+  }
+  .slogan-line.text-sm {
+    font-size: 1.2rem;
+  }
+  .kause-slogan-section.wider {
+    padding: 40px 20px;
+    margin: 30px 10px;
+    min-height: 300px;
+  }
+}
+
+.slogan-line span {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+.highlight.ai {
+  background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.team {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kause-animated-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.kause-logo-text {
+  font-size: 3rem;
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+

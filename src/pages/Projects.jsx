@@ -36,6 +36,13 @@ const APPS = [
     img: '/kaivertion.jpg',
     type: 'web',
     url: 'https://kaivertion.onrender.com/'
+  },
+  {
+    id: 'kause',
+    title: 'Kause',
+    desc: 'Göz kırpma ve duruşunuzu takip eden, yapay zeka destekli, takım içi üretkenlik uygulaması.',
+    img: '/kause-icon.png',
+    type: 'desktop'
   }
 ];
 

@@ -83,6 +83,29 @@ const PRIVACY_DATA = {
       }
     ],
     footer: 'Gizlilikle ilgili sorularınız için: kaiwen.info@gmail.com'
+  },
+  'kause': {
+    title: 'Kause',
+    lastUpdated: '16 Haziran 2026',
+    intro: 'Kause, kullanıcıların odaklanma ve duruş verilerini takip ederken gizliliğe en yüksek düzeyde önem verir.',
+    sections: [
+      {
+        icon: <ShieldCheck size={20} />,
+        title: 'Veri Toplanmaz ve Kamera Kaydedilmez',
+        content: 'Uygulama, kişisel verilerinizi toplamaz. Göz kırpma ve duruş analizi için kamera verileri anlık olarak cihazınızda işlenir ve hiçbir şekilde kaydedilmez veya buluta gönderilmez.'
+      },
+      {
+        icon: <Lock size={20} />,
+        title: 'Tamamen Yerel Çalışma',
+        content: 'Tüm yapay zeka analiz işlemleri (MediaPipe vb.) tamamen bilgisayarınızda yerel olarak çalışır.'
+      },
+      {
+        icon: <Bell size={20} />,
+        title: 'Yönetici ve Ekip Verileri',
+        content: 'Eğer bir yönetici ağına (sunucuya) katılırsanız, sadece anonim veya belirlediğiniz isimle çalışma istatistikleriniz ve mola süreleriniz paylaşılır. Görüntüleriniz kesinlikle ağa aktarılmaz.'
+      }
+    ],
+    footer: 'Her türlü sorunuz için: kaiwen.info@gmail.com'
   }
 };
 

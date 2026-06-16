@@ -408,7 +408,8 @@ export default function DynamicIsland() {
                     src={
                       projectId === 'campus-meal' ? campusMealImg :
                         projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' :
-                          visionJournalImg
+                          projectId === 'kause' ? '/kause-icon.png' :
+                            visionJournalImg
                     }
                     className="island-sticky-icon"
                     alt="Project Icon"
