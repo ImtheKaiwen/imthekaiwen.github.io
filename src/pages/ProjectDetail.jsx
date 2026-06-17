@@ -212,40 +212,87 @@ const SmartScreenSimulation = () => {
 
 const PromoVideo = ({ src }) => {
   const [isMuted, setIsMuted] = React.useState(true);
+  const [isPlaying, setIsPlaying] = React.useState(true);
+  const [progress, setProgress] = React.useState(0);
+  const [isHovering, setIsHovering] = React.useState(false);
   const videoRef = React.useRef(null);
+  const progressRef = React.useRef(null);
 
-  const toggleMute = () => {
+  const toggleMute = (e) => {
+    e.stopPropagation();
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
     }
   };
 
+  const togglePlay = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current) {
+      const current = videoRef.current.currentTime;
+      const duration = videoRef.current.duration;
+      setProgress((current / duration) * 100);
+    }
+  };
+
+  const handleSeek = (e) => {
+    e.stopPropagation();
+    if (progressRef.current && videoRef.current) {
+      const rect = progressRef.current.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      videoRef.current.currentTime = pos * videoRef.current.duration;
+    }
+  };
+
   return (
-    <motion.section
+    <motion.section 
       className="promo-video-section"
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
     >
-      <div className="video-wrapper">
-        <video
+      <div 
+        className="video-wrapper"
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        onClick={togglePlay}
+      >
+        <video 
           ref={videoRef}
-          src={src}
-          autoPlay
-          loop
+          src={src} 
+          autoPlay 
+          loop 
           muted={isMuted}
           playsInline
           className="promo-video"
+          onTimeUpdate={handleTimeUpdate}
         />
-        <button
-          className="mute-toggle-btn"
-          onClick={toggleMute}
-          aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
-        >
-          <i className={`fas ${isMuted ? 'fa-volume-mute' : 'fa-volume-up'}`}></i>
-        </button>
+        
+        <div className={`video-controls ${isHovering ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
+          <button className="control-btn play-btn" onClick={togglePlay} aria-label={isPlaying ? "Durdur" : "Oynat"}>
+            <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
+          </button>
+          
+          <div className="progress-container" ref={progressRef} onClick={handleSeek}>
+            <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+          </div>
+
+          <button className="control-btn mute-btn" onClick={toggleMute} aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}>
+            <i className={`fas ${isMuted ? 'fa-volume-mute' : 'fa-volume-up'}`}></i>
+          </button>
+        </div>
       </div>
     </motion.section>
   );
