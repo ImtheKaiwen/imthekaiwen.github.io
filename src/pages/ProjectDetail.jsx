@@ -62,6 +62,7 @@ const projectData = {
     ],
     universities: [],
     downloadUrl: 'https://github.com/ImtheKaiwen/vision_journal_desktop/releases/download/v1.0.3/Vision-Journal-Setup-1.0.3.exe',
+    githubRepoForLatestRelease: 'ImtheKaiwen/vision_journal_desktop',
     contact: 'kaiwen.info@gmail.com'
   },
   'kause': {
@@ -79,6 +80,7 @@ const projectData = {
     ],
     universities: [],
     downloadUrl: 'https://github.com/ImtheKaiwen/kause/releases/download/v0.1.2/Kause-Setup-0.1.2.exe',
+    githubRepoForLatestRelease: 'ImtheKaiwen/kause',
     contact: 'kaiwen.info@gmail.com'
   }
 };
@@ -432,7 +434,7 @@ export default function ProjectDetail() {
     }
   };
 
-  const handleIslandAction = (action) => {
+  const handleIslandAction = async (action) => {
     if (action === 'appstore') {
       showMessage("App Store'a Yönlendiriliyor...", <i className="fab fa-apple"></i>, 2000);
       window.open(project.appStore, '_blank');
@@ -442,8 +444,28 @@ export default function ProjectDetail() {
       window.open(project.googlePlay, '_blank');
     }
     if (action === 'download') {
-      showMessage("İndirme sayfasına yönlendiriliyor...", <i className="fas fa-download"></i>, 2000);
-      window.open(project.downloadUrl, '_blank');
+      if (project.githubRepoForLatestRelease) {
+        showMessage("En güncel sürüm bulunuyor...", <i className="fas fa-sync fa-spin"></i>, 2000);
+        try {
+          const response = await fetch(`https://api.github.com/repos/${project.githubRepoForLatestRelease}/releases/latest`);
+          const data = await response.json();
+          const exeAsset = data.assets?.find(asset => asset.name.endsWith('.exe'));
+          
+          if (exeAsset) {
+            showMessage("İndirme başlatılıyor...", <i className="fas fa-download"></i>, 2000);
+            window.open(exeAsset.browser_download_url, '_blank');
+          } else {
+            // Eğer exe bulunamazsa direkt releases sayfasına yönlendir
+            window.open(`https://github.com/${project.githubRepoForLatestRelease}/releases/latest`, '_blank');
+          }
+        } catch (error) {
+          // Hata durumunda statik linke dön
+          window.open(project.downloadUrl, '_blank');
+        }
+      } else {
+        showMessage("İndirme sayfasına yönlendiriliyor...", <i className="fas fa-download"></i>, 2000);
+        window.open(project.downloadUrl, '_blank');
+      }
     }
     if (action === 'mail') {
       showMessage("E-posta uygulaması açılıyor...", <i className="fas fa-envelope"></i>, 2000);
