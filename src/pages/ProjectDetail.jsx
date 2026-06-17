@@ -215,8 +215,33 @@ const PromoVideo = ({ src }) => {
   const [isPlaying, setIsPlaying] = React.useState(true);
   const [progress, setProgress] = React.useState(0);
   const [isHovering, setIsHovering] = React.useState(false);
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
   const videoRef = React.useRef(null);
   const progressRef = React.useRef(null);
+  const containerRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = (e) => {
+    e.stopPropagation();
+    if (!document.fullscreenElement) {
+      if (containerRef.current?.requestFullscreen) {
+        containerRef.current.requestFullscreen().catch(err => {
+          console.error("Fullscreen error:", err);
+        });
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
 
   const toggleMute = (e) => {
     e.stopPropagation();
@@ -264,7 +289,8 @@ const PromoVideo = ({ src }) => {
       transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
     >
       <div 
-        className="video-wrapper"
+        ref={containerRef}
+        className={`video-wrapper ${isFullscreen ? 'fullscreen-mode' : ''}`}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         onClick={togglePlay}
@@ -291,6 +317,10 @@ const PromoVideo = ({ src }) => {
 
           <button className="control-btn mute-btn" onClick={toggleMute} aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}>
             <i className={`fas ${isMuted ? 'fa-volume-mute' : 'fa-volume-up'}`}></i>
+          </button>
+
+          <button className="control-btn fullscreen-btn" onClick={toggleFullscreen} aria-label={isFullscreen ? "Küçült" : "Tam Ekran"}>
+            <i className={`fas ${isFullscreen ? 'fa-compress' : 'fa-expand'}`}></i>
           </button>
         </div>
       </div>
