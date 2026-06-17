@@ -239,8 +239,8 @@ const PromoVideo = ({ src }) => {
           playsInline
           className="promo-video"
         />
-        <button 
-          className="mute-toggle-btn" 
+        <button
+          className="mute-toggle-btn"
           onClick={toggleMute}
           aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
         >
@@ -254,7 +254,7 @@ const PromoVideo = ({ src }) => {
 const KausePrivacyCards = () => {
   return (
     <div className="kause-bento-grid">
-      <motion.div 
+      <motion.div
         className="bento-item wide privacy-highlight"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -267,7 +267,7 @@ const KausePrivacyCards = () => {
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="bento-item offline-highlight"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -284,7 +284,7 @@ const KausePrivacyCards = () => {
         </div>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="bento-item backup-highlight"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -408,6 +408,24 @@ export default function ProjectDetail() {
         { path: `/project/${id}#contact`, label: 'Contact' }
       ]);
       setLeftAction('back');
+
+      if (id === 'kause') {
+        const originalTitle = document.title;
+        const favicon = document.querySelector("link[rel~='icon']");
+        const originalFavicon = favicon ? favicon.href : '';
+
+        document.title = 'Kause - AI Eye & Posture Tracking';
+        if (favicon) {
+          favicon.href = '/kause-icon.png';
+        }
+
+        return () => {
+          document.title = originalTitle;
+          if (favicon && originalFavicon) {
+            favicon.href = originalFavicon;
+          }
+        };
+      }
     }
   }, [id, project, setNavLinks, setLeftAction]);
 
