@@ -1130,3 +1130,213 @@
   text-align: center;
 }
 
+
+/* Kause Privacy Cards */
+.kause-privacy-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto 20px auto;
+  padding: 0 20px;
+}
+
+.privacy-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 35px 25px;
+  border-radius: 20px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.privacy-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.privacy-card .icon-wrapper {
+  width: 65px;
+  height: 65px;
+  background: var(--theme-gradient, linear-gradient(135deg, #1f1f1f, #050505));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.privacy-card .icon-wrapper i {
+  font-size: 26px;
+  color: white;
+}
+
+.privacy-card h3 {
+  color: var(--theme-color, #0f1115);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.privacy-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .privacy-card {
+    width: 100%;
+    padding: 25px 20px;
+  }
+}
+
+
+/* Bento Grid for Privacy */
+.kause-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto 20px auto;
+  padding: 0 20px;
+}
+
+.bento-item {
+  background: #0f1115;
+  border-radius: 30px;
+  padding: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.bento-item::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at top right, rgba(255,255,255,0.03), transparent 60%);
+  pointer-events: none;
+}
+
+.bento-item.wide {
+  grid-column: span 2;
+  background: linear-gradient(135deg, #11141c 0%, #0a0b0f 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bento-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.bento-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  position: relative;
+  text-align: left;
+}
+
+.icon-glow-wrapper {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.icon-glow-wrapper i {
+  font-size: 24px;
+  background: linear-gradient(135deg, #fff, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.privacy-highlight .icon-glow-wrapper {
+  background: rgba(30, 215, 96, 0.15);
+  box-shadow: 0 0 30px rgba(30, 215, 96, 0.3);
+}
+
+.privacy-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #1ed760, #10ac84);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.offline-highlight .icon-glow-wrapper {
+  background: rgba(66, 144, 245, 0.15);
+  box-shadow: 0 0 30px rgba(66, 144, 245, 0.3);
+}
+
+.offline-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #4290f5, #00d2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backup-highlight .icon-glow-wrapper {
+  background: rgba(255, 107, 107, 0.15);
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+}
+
+.backup-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #ff6b6b, #ff4757);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.slash-line {
+  position: absolute;
+  width: 32px;
+  height: 3px;
+  background: linear-gradient(135deg, #4290f5, #00d2ff);
+  transform: rotate(-45deg);
+  border-radius: 2px;
+}
+
+.bento-item h3 {
+  color: #fff !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.bento-item p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .kause-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .bento-item.wide {
+    grid-column: span 1;
+  }
+  .bento-item {
+    padding: 30px;
+  }
+}
+

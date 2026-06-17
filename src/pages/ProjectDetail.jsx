@@ -73,7 +73,7 @@ const projectData = {
     themeGradient: 'linear-gradient(135deg, #1f1f1f, #050505)',
     screenshots: [],
     video: '/video/kause.mp4',
-    howToVideo: '/video/kause-how.mp4',
+    howToVideo: '/video/Kause-How.mp4',
     features: [
       { icon: 'fas fa-eye', title: 'Göz Kırpma', value: 'Akıllı Uyarı' },
       { icon: 'fas fa-child', title: 'Postür', value: 'Duruş Analizi' },
@@ -239,8 +239,8 @@ const PromoVideo = ({ src }) => {
           playsInline
           className="promo-video"
         />
-        <button
-          className="mute-toggle-btn"
+        <button 
+          className="mute-toggle-btn" 
           onClick={toggleMute}
           aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
         >
@@ -248,6 +248,56 @@ const PromoVideo = ({ src }) => {
         </button>
       </div>
     </motion.section>
+  );
+};
+
+const KausePrivacyCards = () => {
+  return (
+    <div className="kause-bento-grid">
+      <motion.div 
+        className="bento-item wide privacy-highlight"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-user-shield"></i></div>
+          <h3>Tam Gizlilik Garantisi</h3>
+          <p>Kamera görüntüleri asla kaydedilmez, izlenmez veya herhangi bir bulut sunucusuna yüklenmez. Uygulama içerisindeki tüm analiz süreci anlık olarak gerçekleşir ve verileriniz tamamen sizin kontrolünüzdedir.</p>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className="bento-item offline-highlight"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.1 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper">
+            <i className="fas fa-wifi"></i>
+            <div className="slash-line"></div>
+          </div>
+          <h3>İnternet Gerekmez</h3>
+          <p>Yapay zeka modelleri cihazınızda lokal olarak çalışır. Seyahatte, kafede veya internetin olmadığı her yerde kesintisiz aktif kalır.</p>
+        </div>
+      </motion.div>
+
+      <motion.div 
+        className="bento-item backup-highlight"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-hdd"></i></div>
+          <h3>Yerel Yedekleme</h3>
+          <p>Tüm gelişim verileriniz kendi bilgisayarınızın diskinde çevrimdışı bir şekilde depolanır ve yedeklenir. Güvenliğiniz en üst seviyededir.</p>
+        </div>
+      </motion.div>
+    </div>
   );
 };
 
@@ -354,7 +404,7 @@ export default function ProjectDetail() {
     if (project) {
       setNavLinks([
         { path: `/project/${id}#about`, label: 'About' },
-        { path: `/project/${id}#app-content`, label: 'Features' },
+        { path: `/project/${id}#${project.screenshots.length > 0 ? 'app-content' : (project.howToVideo ? 'how-it-works' : 'about')}`, label: 'Features' },
         { path: `/project/${id}#contact`, label: 'Contact' }
       ]);
       setLeftAction('back');
@@ -384,7 +434,7 @@ export default function ProjectDetail() {
   }, [location.hash, id]);
 
   useEffect(() => {
-    const sections = ['about', 'app-content', 'contact'];
+    const sections = ['about', 'app-content', 'how-it-works', 'contact'];
     let throttleTimer = false;
 
     const handleScroll = () => {
@@ -451,7 +501,7 @@ export default function ProjectDetail() {
           const response = await fetch(`https://api.github.com/repos/${project.githubRepoForLatestRelease}/releases/latest`);
           const data = await response.json();
           const exeAsset = data.assets?.find(asset => asset.name.endsWith('.exe'));
-          
+
           if (exeAsset) {
             showMessage("İndirme başlatılıyor...", <i className="fas fa-download"></i>, 2000);
             window.open(exeAsset.browser_download_url, '_blank');
@@ -560,10 +610,12 @@ export default function ProjectDetail() {
               </div>
             ))}
           </div>
+
+          {id === 'kause' && <KausePrivacyCards />}
         </section>
 
         {project.howToVideo && (
-          <div className="how-to-section">
+          <div className="how-to-section" id="how-it-works">
             <h1 className="section-title">Nasıl Çalışır?</h1>
             <h2 className="section-subtitle">Programın kullanımı hakkında detaylı bilgi</h2>
             <PromoVideo src={project.howToVideo} />

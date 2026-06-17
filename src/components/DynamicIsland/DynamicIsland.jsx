@@ -102,7 +102,7 @@ export default function DynamicIsland() {
     if (isProjectPage && projectId) {
       return [
         { path: `/project/${projectId}#about`, label: 'About' },
-        { path: `/project/${projectId}#app-content`, label: 'Features' },
+        { path: `/project/${projectId}#${projectId === 'kause' ? 'how-it-works' : 'app-content'}`, label: 'Features' },
         { path: `/project/${projectId}#contact`, label: 'Contact' }
       ];
     }
