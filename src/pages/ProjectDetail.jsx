@@ -78,7 +78,7 @@ const projectData = {
       { icon: 'fas fa-users', title: 'Yönetim', value: 'Canlı Ekip Takibi' }
     ],
     universities: [],
-    downloadUrl: 'https://github.com/ImtheKaiwen/kause/releases/download/v0.1.0/Kause-Setup-0.1.0.exe',
+    downloadUrl: 'https://github.com/ImtheKaiwen/kause/releases/download/v0.1.2/Kause-Setup-0.1.2.exe',
     contact: 'kaiwen.info@gmail.com'
   }
 };
@@ -219,7 +219,7 @@ const PromoVideo = ({ src }) => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       className="promo-video-section"
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -227,17 +227,17 @@ const PromoVideo = ({ src }) => {
       transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
     >
       <div className="video-wrapper">
-        <video 
+        <video
           ref={videoRef}
-          src={src} 
-          autoPlay 
-          loop 
+          src={src}
+          autoPlay
+          loop
           muted={isMuted}
           playsInline
           className="promo-video"
         />
-        <button 
-          className="mute-toggle-btn" 
+        <button
+          className="mute-toggle-btn"
           onClick={toggleMute}
           aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
         >
@@ -289,7 +289,7 @@ const KauseSloganAnimation = () => {
             </div>
           </motion.div>
         )}
-        
+
         {phase === 1 && (
           <motion.div key="p1" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
             <div className="slogan-line">
@@ -318,17 +318,17 @@ const KauseSloganAnimation = () => {
 
         {phase === 3 && (
           <motion.div key="p3" className="slogan-content logo-phase" variants={containerVariants} initial="hidden" animate="show" exit="exit">
-            <motion.img 
-              src="/kause-icon.png" 
-              alt="Kause Logo" 
+            <motion.img
+              src="/kause-icon.png"
+              alt="Kause Logo"
               className="kause-animated-logo"
               initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
               animate={{ scale: 1, opacity: 1, rotate: 0, transition: { type: 'spring', damping: 12, stiffness: 100 } }}
             />
-            <motion.h2 
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
-               className="kause-logo-text"
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="kause-logo-text"
             >
               Kause
             </motion.h2>
