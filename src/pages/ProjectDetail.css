@@ -1106,3 +1106,27 @@
   font-size: 18px;
 }
 
+
+/* How To Section */
+.how-to-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.how-to-section .section-title {
+  font-size: clamp(32px, 4vw, 42px);
+  color: #333;
+  font-weight: 800;
+  text-align: center;
+}
+
+.how-to-section .section-subtitle {
+  color: #64748b;
+  font-size: clamp(16px, 2vw, 22px);
+  margin-top: 15px;
+  text-align: center;
+}
+

@@ -73,6 +73,7 @@ const projectData = {
     themeGradient: 'linear-gradient(135deg, #1f1f1f, #050505)',
     screenshots: [],
     video: '/video/kause.mp4',
+    howToVideo: '/video/kause-how.mp4',
     features: [
       { icon: 'fas fa-eye', title: 'Göz Kırpma', value: 'Akıllı Uyarı' },
       { icon: 'fas fa-child', title: 'Postür', value: 'Duruş Analizi' },
@@ -560,6 +561,14 @@ export default function ProjectDetail() {
             ))}
           </div>
         </section>
+
+        {project.howToVideo && (
+          <div className="how-to-section">
+            <h1 className="section-title">Nasıl Çalışır?</h1>
+            <h2 className="section-subtitle">Programın kullanımı hakkında detaylı bilgi</h2>
+            <PromoVideo src={project.howToVideo} />
+          </div>
+        )}
 
         {project.screenshots.length > 0 && (
           <section id="app-content" className="app-view">
