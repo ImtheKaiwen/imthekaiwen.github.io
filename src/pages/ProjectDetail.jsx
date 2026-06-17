@@ -71,6 +71,7 @@ const projectData = {
     themeColor: '#0A0A0A',
     themeGradient: 'linear-gradient(135deg, #1f1f1f, #050505)',
     screenshots: [],
+    video: '/video/kause.mp4',
     features: [
       { icon: 'fas fa-eye', title: 'Göz Kırpma', value: 'Akıllı Uyarı' },
       { icon: 'fas fa-child', title: 'Postür', value: 'Duruş Analizi' },
@@ -203,6 +204,47 @@ const SmartScreenSimulation = () => {
         )}
       </motion.div>
     </div>
+  );
+};
+
+const PromoVideo = ({ src }) => {
+  const [isMuted, setIsMuted] = React.useState(true);
+  const videoRef = React.useRef(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  return (
+    <motion.section 
+      className="promo-video-section"
+      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
+    >
+      <div className="video-wrapper">
+        <video 
+          ref={videoRef}
+          src={src} 
+          autoPlay 
+          loop 
+          muted={isMuted}
+          playsInline
+          className="promo-video"
+        />
+        <button 
+          className="mute-toggle-btn" 
+          onClick={toggleMute}
+          aria-label={isMuted ? "Sesi aç" : "Sesi kapat"}
+        >
+          <i className={`fas ${isMuted ? 'fa-volume-mute' : 'fa-volume-up'}`}></i>
+        </button>
+      </div>
+    </motion.section>
   );
 };
 
@@ -435,6 +477,10 @@ export default function ProjectDetail() {
           />
           <h1>{project.title}</h1>
           <p>{project.subtitle}</p>
+
+          {project.video && (
+            <PromoVideo src={project.video} />
+          )}
 
           {id === 'kause' && <KauseSloganAnimation />}
 
