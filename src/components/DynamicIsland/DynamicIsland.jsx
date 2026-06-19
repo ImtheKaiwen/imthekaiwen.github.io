@@ -19,7 +19,8 @@ const GLOBAL_KEYWORDS = [
   { keywords: ['proje', 'uygulama', 'portfolio', 'çalışma'], path: '/projects' },
   { keywords: ['hakkında', 'kim', 'özgeçmiş'], path: '/#about' },
   { keywords: ['iletişim', 'mail', 'ulaş'], path: '#contact' },
-  { keywords: ['teklif', 'fiyat', 'bütçe', 'hizmet', 'hizmetler', 'istek', 'proposal', 'quote', 'offer'], path: '/proposal' }
+  { keywords: ['teklif', 'fiyat', 'bütçe', 'hizmet', 'hizmetler', 'istek', 'proposal', 'quote', 'offer'], path: '/proposal' },
+  { keywords: ['kallor', 'renk', 'palette', 'cetvel', 'ölçüm', 'pixel'], path: '/project/kallor' }
 ];
 
 const LOCAL_MAP = {
@@ -27,9 +28,9 @@ const LOCAL_MAP = {
   'ana sayfa': { action: 'navigate', path: '/' },
   'home': { action: 'navigate', path: '/' },
   'projects': { action: 'navigate', path: '/projects' },
-  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }] },
-  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }] },
-  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }] },
+  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
+  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
+  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
   'about': { action: 'scroll', target: 'about' },
   'hakkında': { action: 'scroll', target: 'about' },
   'hakkımda': { action: 'scroll', target: 'about' },
@@ -39,6 +40,11 @@ const LOCAL_MAP = {
   'iletişim': { action: 'contact' },
   'campus': { action: 'navigate', path: PROJECT_CAMPUS },
   'vision': { action: 'navigate', path: PROJECT_VISION },
+  'kause': { action: 'navigate', path: '/project/kause' },
+  'kallor': { action: 'navigate', path: '/project/kallor' },
+  'renk': { action: 'navigate', path: '/project/kallor' },
+  'cetvel': { action: 'navigate', path: '/project/kallor' },
+  'ölçüm': { action: 'navigate', path: '/project/kallor' },
   'linkedin': { action: 'options', answerText: 'LinkedIn profilim:', options: [{ id: 'linkedin', label: 'LinkedIn' }] },
   'mail': { action: 'options', answerText: 'E-posta adresim:', options: [{ id: 'mail', label: 'E-posta' }] },
   'teklif': { action: 'navigate', path: '/proposal' },
@@ -371,6 +377,8 @@ export default function DynamicIsland() {
     // 5. Project Specific
     if (id === 'campus-meal') { navigate(PROJECT_CAMPUS); handleReset(); return; }
     if (id === 'vision-journal') { navigate(PROJECT_VISION); handleReset(); return; }
+    if (id === 'kause') { navigate('/project/kause'); handleReset(); return; }
+    if (id === 'kallor') { navigate('/project/kallor'); handleReset(); return; }
 
     handleReset();
   };
@@ -409,7 +417,8 @@ export default function DynamicIsland() {
                       projectId === 'campus-meal' ? campusMealImg :
                         projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' :
                           projectId === 'kause' ? '/kause-icon.png' :
-                            visionJournalImg
+                            projectId === 'kallor' ? '/kallor.jpg' :
+                              visionJournalImg
                     }
                     className="island-sticky-icon"
                     alt="Project Icon"
@@ -488,6 +497,8 @@ export default function DynamicIsland() {
                     <button key={opt.id} className="interactive-option-btn" onClick={() => handleIslandAction(opt)}>
                       {opt.id === 'campus-meal' && <img src={campusMealImg} alt="" className="opt-icon" />}
                       {opt.id === 'vision-journal' && <img src={visionJournalImg} alt="" className="opt-icon" />}
+                      {opt.id === 'kause' && <img src="/kause-icon.png" alt="" className="opt-icon" />}
+                      {opt.id === 'kallor' && <img src="/kallor.jpg" alt="" className="opt-icon" />}
                       {(opt.id === 'mail' || opt.id.includes('posta')) && <Mail size={18} />}
                       {opt.id === 'linkedin' && <i className="fab fa-linkedin"></i>}
                       <span>{opt.label}</span>

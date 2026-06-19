@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gizlilik Politikası - Kallor</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px 50px 40px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+        }
+        .logo-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .logo-header img {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+        }
+        .logo-header .brand {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-header .brand-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #df1f1a 0%, #faad29 50%, #03b7f2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .logo-header .brand-sub {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0f1115;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+        .updated {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+        .intro {
+            background: linear-gradient(135deg, rgba(223,31,26,0.06), rgba(3,183,242,0.06));
+            border-left: 4px solid;
+            border-image: linear-gradient(135deg, #df1f1a, #03b7f2) 1;
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 36px;
+            font-size: 0.97rem;
+            color: #334155;
+        }
+        .section {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 28px;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #f1f5f9;
+        }
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .icon-red { background: rgba(223,31,26,0.1); }
+        .icon-green { background: rgba(0,200,140,0.1); }
+        .icon-blue { background: rgba(3,183,242,0.1); }
+        .section-text h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #0f1115;
+            margin-bottom: 6px;
+        }
+        .section-text p {
+            font-size: 0.92rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        .footer a {
+            color: #0ca9dc;
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 30px 20px; }
+            .section { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="/kallor.jpg" alt="Kallor Logo" onerror="this.style.display='none'">
+            <div class="brand">
+                <span class="brand-name">Kallor</span>
+                <span class="brand-sub">Akıllı Tasarım Asistanı</span>
+            </div>
+        </div>
+
+        <h1>Gizlilik Politikası</h1>
+        <p class="updated">Son Güncelleme: 19 Haziran 2026</p>
+
+        <div class="intro">
+            Kallor, tasarımcılar ve frontend geliştiriciler için ekran üzerinde renk seçimi, ölçüm ve çizim araçları sunarken kullanıcı gizliliğini en ön planda tutar.
+        </div>
+
+        <div class="section">
+            <div class="section-icon icon-red">🛡️</div>
+            <div class="section-text">
+                <h2>Veri Toplanmaz</h2>
+                <p>Kallor uygulaması, kişisel verilerinizi, ekran görüntülerinizi veya ölçüm yaptığınız koordinat bilgilerini kesinlikle kaydetmez, depolamaz ve internete aktarmaz. Uygulama hiçbir hesap ya da kimlik bilgisi gerektirmez.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-icon icon-green">💻</div>
+            <div class="section-text">
+                <h2>Tamamen Yerel Çalışma</h2>
+                <p>Renk paletleriniz, çizimleriniz ve tüm uygulama ayarlarınız sadece bilgisayarınızda yerel olarak (çevrimdışı) saklanır. Hiçbir bulut sunucusuna bağlantı kurulmaz.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-icon icon-blue">🔒</div>
+            <div class="section-text">
+                <h2>Üçüncü Taraf Erişimi Yok</h2>
+                <p>Uygulama içerisinde herhangi bir reklam ağı, analiz kütüphanesi (Google Analytics vb.) veya takip mekanizması bulunmamaktadır. Verileriniz yalnızca size aittir.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Gizlilikle ilgili sorularınız için: <a href="mailto:kaiwen.info@gmail.com">kaiwen.info@gmail.com</a></p>
+            <p style="margin-top: 12px;">&copy; 2026 Kallor. Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+</body>
+</html>

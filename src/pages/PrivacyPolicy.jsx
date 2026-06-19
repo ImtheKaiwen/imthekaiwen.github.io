@@ -106,6 +106,29 @@ const PRIVACY_DATA = {
       }
     ],
     footer: 'Her türlü sorunuz için: kaiwen.info@gmail.com'
+  },
+  'kallor': {
+    title: 'Kallor',
+    lastUpdated: '19 Haziran 2026',
+    intro: 'Kallor, tasarımcılar ve frontend geliştiriciler için ekran üzerinde renk seçimi, ölçüm ve çizim araçları sunarken kullanıcı gizliliğini en ön planda tutar.',
+    sections: [
+      {
+        icon: <ShieldCheck size={20} />,
+        title: 'Veri Toplanmaz',
+        content: 'Kallor uygulaması, kişisel verilerinizi, ekran görüntülerinizi veya ölçüm yaptığınız koordinat bilgilerini kesinlikle kaydetmez, depolamaz ve internete aktarmaz.'
+      },
+      {
+        icon: <Lock size={20} />,
+        title: 'Tamamen Yerel Çalışma',
+        content: 'Renk paletleriniz, çizimleriniz ve tüm ayarlarınız sadece bilgisayarınızda yerel olarak (çevrimdışı) saklanır.'
+      },
+      {
+        icon: <EyeOff size={20} />,
+        title: 'Üçüncü Taraf Erişimi Yok',
+        content: 'Uygulama içerisinde herhangi bir reklam, takip kodu veya analiz kütüphanesi bulunmamaktadır.'
+      }
+    ],
+    footer: 'Gizlilikle ilgili sorularınız için: kaiwen.info@gmail.com'
   }
 };
 

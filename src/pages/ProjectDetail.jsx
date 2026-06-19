@@ -83,6 +83,25 @@ const projectData = {
     downloadUrl: 'https://github.com/ImtheKaiwen/kause/releases/download/v0.1.2/Kause-Setup-0.1.2.exe',
     githubRepoForLatestRelease: 'ImtheKaiwen/kause',
     contact: 'kaiwen.info@gmail.com'
+  },
+  'kallor': {
+    title: 'Kallor',
+    img: '/kallor.jpg',
+    subtitle: 'Ekran cetveli, anlık çizim ve gelişmiş renk paleti araçları sunan akıllı tasarım asistanı',
+    themeColor: '#7C3AED',
+    themeGradient: 'linear-gradient(135deg, #7C3AED, #A78BFA)',
+    screenshots: [],
+    video: '/video/kallor-anim.mp4',
+    howToVideo: '/video/kallor.mp4',
+    features: [
+      { icon: 'fas fa-palette', title: 'Renk Paleti', value: 'Akıllı Uyum' },
+      { icon: 'fas fa-ruler-combined', title: 'Hassas Ölçüm', value: 'Ekran Cetveli' },
+      { icon: 'fas fa-paint-brush', title: 'Ekran Çizimi', value: 'Anlık Çizim' }
+    ],
+    universities: [],
+    downloadUrl: 'https://github.com/ImtheKaiwen/kallor/releases/download/v1.0.0/Kallor-Setup-1.0.0.exe',
+    githubRepoForLatestRelease: 'ImtheKaiwen/kallor',
+    contact: 'kaiwen.info@gmail.com'
   }
 };
 
@@ -478,6 +497,141 @@ const KauseSloganAnimation = () => {
   );
 };
 
+const KallorSloganAnimation = () => {
+  const [phase, setPhase] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setPhase((p) => (p + 1) % 4);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    exit: { opacity: 0, y: -20, filter: 'blur(5px)', transition: { duration: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.9 },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+  };
+
+  return (
+    <div className="kallor-slogan-section wider">
+      <AnimatePresence mode="wait">
+        {phase === 0 && (
+          <motion.div key="p0" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Design with</motion.span>
+              <motion.span variants={itemVariants} className="highlight ruler">Precision,</motion.span>
+              <motion.span variants={itemVariants}>Create with</motion.span>
+              <motion.span variants={itemVariants} className="highlight color">Color.</motion.span>
+            </div>
+            <div className="slogan-line final-kause">
+              <motion.span variants={itemVariants}>Meet</motion.span>
+              <motion.span variants={itemVariants} className="highlight kallor">Kallor.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 1 && (
+          <motion.div key="p1" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Custom</motion.span>
+              <motion.span variants={itemVariants} className="highlight color">Color Palettes & Conversions</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>HEX, RGB, and HSL formats instantly at your fingertips.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 2 && (
+          <motion.div key="p2" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Precision</motion.span>
+              <motion.span variants={itemVariants} className="highlight ruler">Screen Ruler</motion.span>
+              <motion.span variants={itemVariants}>&</motion.span>
+              <motion.span variants={itemVariants} className="highlight draw">Sketching</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Measure pixels directly on your screen and annotate instantly.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 3 && (
+          <motion.div key="p3" className="slogan-content logo-phase" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <motion.img
+              src="/kallor.jpg"
+              alt="Kallor Logo"
+              className="kallor-animated-logo"
+              initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0, transition: { type: 'spring', damping: 12, stiffness: 100 } }}
+            />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="kallor-logo-text"
+            >
+              Kallor
+            </motion.h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const KallorDetailedFeatures = () => {
+  return (
+    <div className="kause-bento-grid" id="app-content">
+      <motion.div
+        className="bento-item wide color-highlight kallor-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-palette"></i></div>
+          <h3>Akıllı Renk Paletleri</h3>
+          <p>Uyumlu renk kombinasyonları oluşturun, kontrast oranlarını (WCAG standartları) anlık test edin ve tasarımlarınız için en doğru renk şemalarını kolayca kurgulayın.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item measure-highlight kallor-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.1 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-ruler-combined"></i></div>
+          <h3>Hassas Ekran Cetveli</h3>
+          <p>Ekranda seçtiğiniz iki nokta arasındaki mesafeyi piksel bazında hatasız bir şekilde ölçün. Frontend tasarımlarınızı birebir koda dökerken mesafe hatalarına son verin.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item draw-highlight kallor-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-paint-brush"></i></div>
+          <h3>Ekran Çizim Aracı</h3>
+          <p>Ekranın herhangi bir bölgesi üzerine serbestçe çizimler yapın, notlar alın ve anlık geribildirimler/açıklamalar için görsel işaretlemeler oluşturun.</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 export default function ProjectDetail() {
   const { id } = useParams();
   const location = useLocation();
@@ -490,7 +644,7 @@ export default function ProjectDetail() {
     if (project) {
       setNavLinks([
         { path: `/project/${id}#about`, label: 'About' },
-        { path: `/project/${id}#${project.screenshots.length > 0 ? 'app-content' : (project.howToVideo ? 'how-it-works' : 'about')}`, label: 'Features' },
+        { path: `/project/${id}#${id === 'kallor' ? 'app-content' : (project.screenshots.length > 0 ? 'app-content' : (project.howToVideo ? 'how-it-works' : 'about'))}`, label: 'Features' },
         { path: `/project/${id}#contact`, label: 'Contact' }
       ]);
       setLeftAction('back');
@@ -503,6 +657,24 @@ export default function ProjectDetail() {
         document.title = 'Kause - AI Eye & Posture Tracking';
         if (favicon) {
           favicon.href = '/kause-icon.png';
+        }
+
+        return () => {
+          document.title = originalTitle;
+          if (favicon && originalFavicon) {
+            favicon.href = originalFavicon;
+          }
+        };
+      }
+
+      if (id === 'kallor') {
+        const originalTitle = document.title;
+        const favicon = document.querySelector("link[rel~='icon']");
+        const originalFavicon = favicon ? favicon.href : '';
+
+        document.title = 'Kallor - Smart Color & Measure Tool';
+        if (favicon) {
+          favicon.href = '/kallor.jpg';
         }
 
         return () => {
@@ -604,7 +776,7 @@ export default function ProjectDetail() {
         try {
           const response = await fetch(`https://api.github.com/repos/${project.githubRepoForLatestRelease}/releases/latest`);
           const data = await response.json();
-          const exeAsset = data.assets?.find(asset => asset.name.endsWith('.exe'));
+          const exeAsset = data.assets?.find(asset => asset.name.toLowerCase().includes('setup') && asset.name.endsWith('.exe')) || data.assets?.find(asset => asset.name.endsWith('.exe'));
 
           if (exeAsset) {
             showMessage("İndirme başlatılıyor...", <i className="fas fa-download"></i>, 2000);
@@ -660,6 +832,7 @@ export default function ProjectDetail() {
           )}
 
           {id === 'kause' && <KauseSloganAnimation />}
+          {id === 'kallor' && <KallorSloganAnimation />}
 
           <div className="download-btn-container">
             {project.appStore && (
@@ -705,7 +878,7 @@ export default function ProjectDetail() {
 
           <div className="features">
             {project.features.map((f, i) => (
-              <div className="feature-card" key={i}>
+              <div className={`feature-card ${id === 'kallor' ? `kallor-card-${i}` : ''}`} key={i}>
                 <div className="header-info">
                   <div className="icon"><i className={f.icon}></i></div>
                   <h3>{f.title}</h3>
@@ -717,6 +890,8 @@ export default function ProjectDetail() {
 
           {id === 'kause' && <KausePrivacyCards />}
         </section>
+
+        {id === 'kallor' && <KallorDetailedFeatures />}
 
         {project.howToVideo && (
           <div className="how-to-section" id="how-it-works">
@@ -762,7 +937,7 @@ export default function ProjectDetail() {
         )}
       </main>
 
-      <footer id="contact">
+      <footer id="contact" className={id === 'kallor' ? 'kallor-footer' : ''}>
         <div className="logo-side">
           <img className="logo-footer" src={project.img} alt="" />
           <h1>{project.title}</h1>

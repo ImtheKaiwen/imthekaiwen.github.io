@@ -43,6 +43,13 @@ const APPS = [
     desc: 'Göz kırpma ve duruşunuzu takip eden, yapay zeka destekli, takım içi üretkenlik uygulaması.',
     img: '/kause-icon.png',
     type: 'desktop'
+  },
+  {
+    id: 'kallor',
+    title: 'Kallor',
+    desc: 'Ekran cetveli, anlık çizim ve gelişmiş renk paleti araçları sunan akıllı tasarım asistanı.',
+    img: '/kallor.jpg',
+    type: 'desktop'
   }
 ];
 
