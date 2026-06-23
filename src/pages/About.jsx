@@ -24,7 +24,7 @@ export default function About() {
     >
       <h1 className="title">Hakkımda</h1>
       <p className="subtitle">
-        Yenilikçi arayüzler tasarlıyor ve Apple benzeri pürüzsüz animasyonlara sahip modern web uygulamaları geliştiriyorum.
+        Yenilikçi arayüzler tasarlıyor, sade ve ferah bir yaklaşımla, pürüzsüz animasyonlara sahip modern web uygulamaları geliştiriyorum.
       </p>
     </motion.div>
   );

@@ -116,6 +116,20 @@
   background-color: #000;
 }
 
+.weburl {
+  background-color: #0f1115;
+  color: white;
+  border: 1px solid #0f1115;
+}
+
+.weburl:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  color: #0f1115;
+  border: 1px solid #0f1115;
+}
+
 /* Features */
 .features {
   width: 100%;
@@ -1784,5 +1798,134 @@
 }
 
 .kaifridge-light-card.bento-item:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* kaido Slogan Animation */
+.kaido-slogan-section.wider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  background: #ffffff;
+  border-radius: 40px;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 350px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.kaido-animated-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.kaido-logo-text {
+  font-size: 3rem;
+  color: #1f2937;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.kaido-slogan-section .slogan-line span {
+  color: #1f2937;
+}
+
+.kaido-slogan-section .slogan-line.text-sm span {
+  color: #4b5563;
+}
+
+.highlight.timer {
+  background: linear-gradient(135deg, #1f2937, #4b5563);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.folders {
+  background: linear-gradient(135deg, #3b82f6, #00d2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.kaido {
+  background: linear-gradient(135deg, #000000 0%, #374151 50%, #6b7280 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  text-shadow: 0 10px 30px rgba(31, 41, 55, 0.15);
+}
+
+@media (max-width: 768px) {
+  .highlight.kaido {
+    font-size: 2.8rem;
+  }
+  .kaido-slogan-section.wider {
+    padding: 40px 20px;
+    margin: 30px 10px;
+    min-height: 300px;
+  }
+}
+
+/* kaido Bento Highlight Glows */
+.todo-highlight .icon-glow-wrapper {
+  background: rgba(15, 17, 21, 0.08);
+  box-shadow: 0 0 30px rgba(15, 17, 21, 0.15);
+}
+
+.todo-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #0f1115, #4b5563);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timer-highlight .icon-glow-wrapper {
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.timer-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.folder-highlight .icon-glow-wrapper {
+  background: rgba(0, 210, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+}
+
+.folder-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #00d2ff, #00b5e2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* kaido light card override: white background for kaido bento items */
+.kaido-light-card.bento-item {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.kaido-light-card.bento-item::before {
+  background: none;
+}
+
+.kaido-light-card.bento-item h3 {
+  color: #0f1115 !important;
+}
+
+.kaido-light-card.bento-item p {
+  color: #64748b;
+}
+
+.kaido-light-card.bento-item:hover {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }

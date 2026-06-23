@@ -157,6 +157,29 @@ const PRIVACY_DATA = {
       }
     ],
     footer: 'Her türlü sorunuz için bizimle iletişime geçebilirsiniz: kaiwen.info@gmail.com'
+  },
+  'kaido': {
+    title: 'kaido',
+    lastUpdated: '23 Haziran 2026',
+    intro: 'kaido ("biz", "uygulama"), minimalist yapılacaklar (todo) asistanı uygulamamızda gizliliğinizi en üst düzeyde korur ve verilerinizi sadece kendi cihazınızda saklar.',
+    sections: [
+      {
+        icon: <Lock size={20} />,
+        title: '1. Tam Veri Yerelliği',
+        content: 'Oluşturduğunuz tüm yapılacak iş listeleri, zamanlayıcı (timer) geçmişiniz ve klasör yapılandırmalarınız sadece kendi cihazınızda depolanır. Herhangi bir bulut sunucusuna veri aktarımı yapılmaz.'
+      },
+      {
+        icon: <EyeOff size={20} />,
+        title: '2. Sıfır Takip Mekanizması',
+        content: 'Uygulama içerisinde herhangi bir reklam kütüphanesi, analiz kodu veya davranış takip mekanizması bulunmamaktadır. Uygulamayı tamamen çevrimdışı ve anonim olarak kullanabilirsiniz.'
+      },
+      {
+        icon: <Bell size={20} />,
+        title: '3. Yerel Zamanlayıcı Bildirimleri',
+        content: 'Dinamik ada zamanlayıcısı tamamlandığında size uyarı vermek amacıyla yerel bildirimler kullanılır. Bu bildirimlerin çalışması tamamen yerel olup, sunucularla herhangi bir veri paylaşımına sebep olmaz.'
+      }
+    ],
+    footer: 'Gizlilik ile ilgili sorularınız için bizimle iletişime geçebilirsiniz: kaiwen.info@gmail.com'
   }
 };
 

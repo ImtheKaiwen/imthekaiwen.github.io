@@ -117,6 +117,29 @@ const projectData = {
     ],
     universities: [],
     contact: 'kaiwen.info@gmail.com'
+  },
+  'kaido': {
+    title: 'kaido',
+    img: '/kaido.jpg',
+    subtitle: 'Sade tasarımı ve dinamik ada entegrasyonuyla şık todo asistanı',
+    themeColor: '#0f1115',
+    themeGradient: 'linear-gradient(135deg, #1f2937, #111827)',
+    webUrl: 'https://kwdo.vercel.app/',
+    screenshots: [
+      'Ekran görüntüsü 2026-06-23 211123.png',
+      'Ekran görüntüsü 2026-06-23 211135.png',
+      'Ekran görüntüsü 2026-06-23 211202.png',
+      'Ekran görüntüsü 2026-06-23 211239.png',
+      'Ekran görüntüsü 2026-06-23 211252.png',
+      'Ekran görüntüsü 2026-06-23 211302.png'
+    ].map(name => `/project-imgs/kaido/${name}`),
+    features: [
+      { icon: 'fas fa-check-circle', title: 'Minimalist Todo', value: 'Sade Tasarım' },
+      { icon: 'fas fa-clock', title: 'Dinamik Ada', value: 'Timer Desteği' },
+      { icon: 'fas fa-folder', title: 'Klasörleme', value: 'Pratik Düzen' }
+    ],
+    universities: [],
+    contact: 'kaiwen.info@gmail.com'
   }
 };
 
@@ -799,6 +822,158 @@ const KaiFridgeDetailedFeatures = () => {
   );
 };
 
+const KaidoSloganAnimation = () => {
+  const [phase, setPhase] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setPhase((p) => (p + 1) % 5);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    exit: { opacity: 0, y: -20, filter: 'blur(5px)', transition: { duration: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.9 },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+  };
+
+  return (
+    <div className="kaido-slogan-section wider">
+      <AnimatePresence mode="wait">
+        {phase === 0 && (
+          <motion.div key="p0" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Gereksiz detayları geride bırakın.</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Sadece işlerinize odaklanın.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 1 && (
+          <motion.div key="p1" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight timer">Dinamik Ada & Zamanlayıcı</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Zamanlayıcı (timer) başlatın, odaklanma sürenizi doğrudan adadan izleyin.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 2 && (
+          <motion.div key="p2" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight folders">Düzenli Klasörleme</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Yapılacakları temiz kategoriler ve modern klasörlerle gruplayın.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 3 && (
+          <motion.div key="p3" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>Sade ve Ferah Arayüz</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Karmaşık paneller yerine, sadece yapacağınız görevler.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 4 && (
+          <motion.div key="p4" className="slogan-content logo-phase" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <motion.img
+              src="/kaido.jpg"
+              alt="kaido Logo"
+              className="kaido-animated-logo"
+              initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0, transition: { type: 'spring', damping: 12, stiffness: 100 } }}
+            />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="kaido-logo-text"
+            >
+              kaido
+            </motion.h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const KaidoDetailedFeatures = () => {
+  return (
+    <div className="kause-bento-grid" id="app-content">
+      <motion.div
+        className="bento-item wide todo-highlight kaido-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-check-circle"></i></div>
+          <h3>Sade & Minimalist Tasarım</h3>
+          <p>Karmaşık panellerden, dikkat dağıtan reklamlardan ve kalabalıktan uzak kalın. kaido, yalnızca görevlerinizi organize etmenize ve üretken kalmanıza odaklanan, son derece sade ve ferah bir tasarım sunar.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item timer-highlight kaido-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.1 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-clock"></i></div>
+          <h3>Dinamik Ada & Zamanlayıcı</h3>
+          <p>Görevleriniz için ekranın üst kısmındaki akıllı dinamik ada aracılığıyla zamanlayıcı (timer) başlatabilirsiniz. Çalışma ve mola sürelerinizi zahmetsizce yönetip odaklanın.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item folder-highlight kaido-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-folder"></i></div>
+          <h3>Kolay Klasörleme & Düzen</h3>
+          <p>Yapılacak listelerinizi projelerinize veya konu başlıklarına göre özel klasörler altında gruplayın. İş, okul ve kişisel hayatınızı kategorilere bölerek kontrol altında tutun.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item wide todo-highlight kaido-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.3 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-magic"></i></div>
+          <h3>Akıcı ve Tatlı Deneyim</h3>
+          <p>Ultra akıcı geçiş animasyonları, yumuşak renk tonları ve sezgisel buton yerleşimleriyle bezenmiş bir yapılacaklar listesi deneyimi. Kaido, işlerinizi organize etmeyi keyifli hale getirir.</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 export default function ProjectDetail() {
   const { id } = useParams();
   const location = useLocation();
@@ -860,6 +1035,24 @@ export default function ProjectDetail() {
         document.title = 'kaiFridge - Akıllı Mutfak Asistanı';
         if (favicon) {
           favicon.href = '/kaifridge.jpg';
+        }
+
+        return () => {
+          document.title = originalTitle;
+          if (favicon && originalFavicon) {
+            favicon.href = originalFavicon;
+          }
+        };
+      }
+
+      if (id === 'kaido') {
+        const originalTitle = document.title;
+        const favicon = document.querySelector("link[rel~='icon']");
+        const originalFavicon = favicon ? favicon.href : '';
+
+        document.title = 'kaido - Sade ve Şık Todo Uygulaması';
+        if (favicon) {
+          favicon.href = '/kaido.jpg';
         }
 
         return () => {
@@ -937,16 +1130,22 @@ export default function ProjectDetail() {
 
   if (!project) return <Navigate to="/projects" />;
 
+  const isLandscape = id.includes('desktop') || project.type === 'desktop' || project.type === 'web' || id === 'kaido';
+
   const scrollPictures = (direction) => {
     if (scrollRef.current) {
       // Masaüstü projeleri için daha fazla kaydır (resim genişliği + gap)
-      const scrollAmount = id.includes('desktop') ? 620 : 300;
+      const scrollAmount = isLandscape ? 620 : 300;
       const amount = direction === 'left' ? -scrollAmount : scrollAmount;
       scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
     }
   };
 
   const handleIslandAction = async (action) => {
+    if (action === 'weburl') {
+      showMessage("Web sitesine yönlendiriliyor...", <i className="fas fa-globe"></i>, 2000);
+      window.open(project.webUrl, '_blank');
+    }
     if (action === 'appstore') {
       showMessage("App Store'a Yönlendiriliyor...", <i className="fab fa-apple"></i>, 2000);
       window.open(project.appStore, '_blank');
@@ -1019,8 +1218,14 @@ export default function ProjectDetail() {
           {id === 'kause' && <KauseSloganAnimation />}
           {id === 'kallor' && <KallorSloganAnimation />}
           {id === 'kaifridge' && <KaiFridgeSloganAnimation />}
+          {id === 'kaido' && <KaidoSloganAnimation />}
 
           <div className="download-btn-container">
+            {project.webUrl && (
+              <button className="download-btn weburl" onClick={() => handleIslandAction('weburl')}>
+                <i className="fas fa-globe"></i> Web Sitesini Ziyaret Et
+              </button>
+            )}
             {project.appStore && (
               <button className="download-btn appstore" onClick={() => handleIslandAction('appstore')}>
                 <i className="fab fa-apple"></i> App Store
@@ -1079,6 +1284,7 @@ export default function ProjectDetail() {
 
         {id === 'kallor' && <KallorDetailedFeatures />}
         {id === 'kaifridge' && <KaiFridgeDetailedFeatures />}
+        {id === 'kaido' && <KaidoDetailedFeatures />}
 
         {project.howToVideo && (
           <div className="how-to-section" id="how-it-works">
@@ -1098,7 +1304,7 @@ export default function ProjectDetail() {
                 {project.screenshots.map((src, i) => (
                   <img
                     key={i}
-                    className={`picture ${id.includes('desktop') ? 'desktop-picture' : ''}`}
+                    className={`picture ${isLandscape ? 'desktop-picture' : ''}`}
                     src={src}
                     alt={`${project.title} screenshot ${i + 1}`}
                   />
@@ -1144,6 +1350,11 @@ export default function ProjectDetail() {
           </div>
           <div className="info-box">
             <h1>Linkler</h1>
+            {project.webUrl && (
+              <button className="footer-link-btn" onClick={() => handleIslandAction('weburl')}>
+                <i className="fas fa-globe"></i> Web Sitesi
+              </button>
+            )}
             {project.appStore && (
               <button className="footer-link-btn" onClick={() => handleIslandAction('appstore')}>
                 <i className="fab fa-apple"></i> App Store

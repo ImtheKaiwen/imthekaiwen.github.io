@@ -21,7 +21,8 @@ const GLOBAL_KEYWORDS = [
   { keywords: ['iletişim', 'mail', 'ulaş'], path: '#contact' },
   { keywords: ['teklif', 'fiyat', 'bütçe', 'hizmet', 'hizmetler', 'istek', 'proposal', 'quote', 'offer'], path: '/proposal' },
   { keywords: ['kallor', 'renk', 'palette', 'cetvel', 'ölçüm', 'pixel'], path: '/project/kallor' },
-  { keywords: ['kaifridge', 'fridge', 'dolap', 'buzdolabı', 'mutfak', 'malzeme', 'ürün'], path: '/project/kaifridge' }
+  { keywords: ['kaifridge', 'fridge', 'dolap', 'buzdolabı', 'mutfak', 'malzeme', 'ürün'], path: '/project/kaifridge' },
+  { keywords: ['kaido', 'todo', 'yapılacaklar', 'liste', 'zamanlayıcı', 'timer', 'klasör'], path: '/project/kaido' }
 ];
 
 const LOCAL_MAP = {
@@ -29,9 +30,9 @@ const LOCAL_MAP = {
   'ana sayfa': { action: 'navigate', path: '/' },
   'home': { action: 'navigate', path: '/' },
   'projects': { action: 'navigate', path: '/projects' },
-  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
-  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
-  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
+  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }, { id: 'kaido', label: 'kaido' }] },
+  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }, { id: 'kaido', label: 'kaido' }] },
+  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }, { id: 'kaido', label: 'kaido' }] },
   'about': { action: 'scroll', target: 'about' },
   'hakkında': { action: 'scroll', target: 'about' },
   'hakkımda': { action: 'scroll', target: 'about' },
@@ -57,6 +58,12 @@ const LOCAL_MAP = {
   'kaifridge': { action: 'navigate', path: '/project/kaifridge' },
   'buzdolabı': { action: 'navigate', path: '/project/kaifridge' },
   'dolap': { action: 'navigate', path: '/project/kaifridge' },
+  'kaido': { action: 'navigate', path: '/project/kaido' },
+  'todo': { action: 'navigate', path: '/project/kaido' },
+  'yapılacaklar': { action: 'navigate', path: '/project/kaido' },
+  'liste': { action: 'navigate', path: '/project/kaido' },
+  'zamanlayıcı': { action: 'navigate', path: '/project/kaido' },
+  'timer': { action: 'navigate', path: '/project/kaido' },
 };
 
 export default function DynamicIsland() {
@@ -384,6 +391,7 @@ export default function DynamicIsland() {
     if (id === 'kause') { navigate('/project/kause'); handleReset(); return; }
     if (id === 'kallor') { navigate('/project/kallor'); handleReset(); return; }
     if (id === 'kaifridge') { navigate('/project/kaifridge'); handleReset(); return; }
+    if (id === 'kaido') { navigate('/project/kaido'); handleReset(); return; }
 
     handleReset();
   };
@@ -424,7 +432,8 @@ export default function DynamicIsland() {
                           projectId === 'kause' ? '/kause-icon.png' :
                             projectId === 'kallor' ? '/kallor.jpg' :
                               projectId === 'kaifridge' ? '/kaifridge.jpg' :
-                                visionJournalImg
+                                projectId === 'kaido' ? '/kaido.jpg' :
+                                  visionJournalImg
                     }
                     className="island-sticky-icon"
                     alt="Project Icon"
@@ -506,6 +515,7 @@ export default function DynamicIsland() {
                       {opt.id === 'kause' && <img src="/kause-icon.png" alt="" className="opt-icon" />}
                       {opt.id === 'kallor' && <img src="/kallor.jpg" alt="" className="opt-icon" />}
                       {opt.id === 'kaifridge' && <img src="/kaifridge.jpg" alt="" className="opt-icon" />}
+                      {opt.id === 'kaido' && <img src="/kaido.jpg" alt="" className="opt-icon" />}
                       {(opt.id === 'mail' || opt.id.includes('posta')) && <Mail size={18} />}
                       {opt.id === 'linkedin' && <i className="fab fa-linkedin"></i>}
                       <span>{opt.label}</span>

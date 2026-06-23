@@ -54,9 +54,16 @@ const APPS = [
   {
     id: 'kaifridge',
     title: 'kaiFridge',
-    desc: 'Buzdolabınızdaki malzemelerle yapay zeka destekli tarifler üreten, Apple tarzı minimalist ve akıllı mutfak asistanı.',
+    desc: 'Buzdolabınızdaki malzemelerle yapay zeka destekli tarifler üreten, son derece sade, ferah ve minimalist bir akıllı mutfak asistanı.',
     img: '/kaifridge.jpg',
     type: 'mobile'
+  },
+  {
+    id: 'kaido',
+    title: 'kaido',
+    desc: 'Sade tasarımı, dinamik ada timer entegrasyonu ve pratik klasörleme özellikleriyle şık bir yapılacaklar (todo) uygulaması.',
+    img: '/kaido.jpg',
+    type: 'web'
   }
 ];
 

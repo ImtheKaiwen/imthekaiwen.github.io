@@ -47,6 +47,8 @@ function AnimatedRoutes() {
       updateFavicon('./campus-icon.png', true);
     } else if (location.pathname.includes('kaifridge')) {
       updateFavicon('./kaifridge.jpg', true);
+    } else if (location.pathname.includes('kaido')) {
+      updateFavicon('./kaido.jpg', true);
     } else {
       updateFavicon('./logo.jpg', true); // Make PP circular
     }
