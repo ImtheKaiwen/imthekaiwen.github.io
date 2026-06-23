@@ -102,6 +102,21 @@ const projectData = {
     downloadUrl: 'https://github.com/ImtheKaiwen/kallor/releases/download/v1.0.0/Kallor-Setup-1.0.0.exe',
     githubRepoForLatestRelease: 'ImtheKaiwen/kallor',
     contact: 'kaiwen.info@gmail.com'
+  },
+  'kaifridge': {
+    title: 'kaiFridge',
+    img: '/kaifridge.jpg',
+    subtitle: '"Bu akşam ne pişirsem?" sorusuna veda edin.',
+    themeColor: '#10B981',
+    themeGradient: 'linear-gradient(135deg, #10B981, #34D399)',
+    screenshots: [1, 2, 3, 4, 5, 6, 7].map(n => `/project-imgs/kaifridge/${n}.png`),
+    features: [
+      { icon: 'fas fa-camera', title: 'Vision AI', value: 'Fotoğraf Çek' },
+      { icon: 'fas fa-microphone', title: 'Kişiye Özel', value: 'Ses ve Yazı' },
+      { icon: 'fas fa-feather', title: 'Sıfır Karmaşa', value: 'Sade Arayüz' }
+    ],
+    universities: [],
+    contact: 'kaiwen.info@gmail.com'
   }
 };
 
@@ -309,36 +324,36 @@ const PromoVideo = ({ src }) => {
   };
 
   return (
-    <motion.section 
+    <motion.section
       className="promo-video-section"
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
     >
-      <div 
+      <div
         ref={containerRef}
         className={`video-wrapper ${isFullscreen ? 'fullscreen-mode' : ''}`}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         onClick={togglePlay}
       >
-        <video 
+        <video
           ref={videoRef}
-          src={src} 
-          autoPlay 
-          loop 
+          src={src}
+          autoPlay
+          loop
           muted={isMuted}
           playsInline
           className="promo-video"
           onTimeUpdate={handleTimeUpdate}
         />
-        
+
         <div className={`video-controls ${isHovering ? 'visible' : ''}`} onClick={(e) => e.stopPropagation()}>
           <button className="control-btn play-btn" onClick={togglePlay} aria-label={isPlaying ? "Durdur" : "Oynat"}>
             <i className={`fas ${isPlaying ? 'fa-pause' : 'fa-play'}`}></i>
           </button>
-          
+
           <div className="progress-container" ref={progressRef} onClick={handleSeek}>
             <div className="progress-bar" style={{ width: `${progress}%` }}></div>
           </div>
@@ -632,6 +647,158 @@ const KallorDetailedFeatures = () => {
   );
 };
 
+const KaiFridgeSloganAnimation = () => {
+  const [phase, setPhase] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setPhase((p) => (p + 1) % 5);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+    exit: { opacity: 0, y: -20, filter: 'blur(5px)', transition: { duration: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30, filter: 'blur(10px)', scale: 0.9 },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, transition: { type: 'spring', stiffness: 100, damping: 15 } }
+  };
+
+  return (
+    <div className="kaifridge-slogan-section wider">
+      <AnimatePresence mode="wait">
+        {phase === 0 && (
+          <motion.div key="p0" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants}>"Bu akşam ne pişirsem?"</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>sorusuna veda edin.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 1 && (
+          <motion.div key="p1" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight snap">Buzdolabını Tara</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Vision AI malzemelerinizi anında tanır ve kaydeder.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 2 && (
+          <motion.div key="p2" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight taste">Sana Özel Tarifler</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Sesli veya yazılı taleplerinize göre damak tadınıza özel tarifler.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 3 && (
+          <motion.div key="p3" className="slogan-content" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <div className="slogan-line">
+              <motion.span variants={itemVariants} className="highlight clean">Minimalist Arayüz</motion.span>
+            </div>
+            <div className="slogan-line text-sm">
+              <motion.span variants={itemVariants}>Pürüzsüz animasyonlar ve sıfır karmaşa.</motion.span>
+            </div>
+          </motion.div>
+        )}
+
+        {phase === 4 && (
+          <motion.div key="p4" className="slogan-content logo-phase" variants={containerVariants} initial="hidden" animate="show" exit="exit">
+            <motion.img
+              src="/kaifridge.jpg"
+              alt="kaiFridge Logo"
+              className="kaifridge-animated-logo"
+              initial={{ scale: 0.5, opacity: 0, rotate: -10 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0, transition: { type: 'spring', damping: 12, stiffness: 100 } }}
+            />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { delay: 0.3 } }}
+              className="kaifridge-logo-text"
+            >
+              kaiFridge
+            </motion.h2>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+const KaiFridgeDetailedFeatures = () => {
+  return (
+    <div className="kause-bento-grid" id="app-content">
+      <motion.div
+        className="bento-item wide snap-highlight kaifridge-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-camera"></i></div>
+          <h3>Fotoğraf Çek ve Keşfet (SNAP & DISCOVER)</h3>
+          <p>Yazı yazarak zaman kaybetmeyin. Premium kullanıcılar buzdolabının bir fotoğrafını çekerek gelişmiş Vision AI teknolojimizin tüm malzemeleri anında algılamasını sağlayabilir. Sanal buzdolabınız otomatik olarak güncellenir.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item taste-highlight kaifridge-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.1 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-microphone"></i></div>
+          <h3>Damak Tadınıza Özel (TAILORED TO YOUR TASTE)</h3>
+          <p>Canınızın ne çektiğini kaiFridge'e söyleyin. İster sesli olarak dile getirin ister yazılı olarak ifade edin; yapay zekamız modunuza, elinizdeki malzemelere ve seçtiğiniz dünya mutfaklarına en uygun tarifi sizin için tasarlar.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item clean-highlight kaifridge-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.2 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-feather-alt"></i></div>
+          <h3>Minimalist & Akıcı Deneyim</h3>
+          <p>Karmaşadan tamamen uzak, pürüzsüz animasyonlar ve modern şık ikonlarla bezenmiş arayüz. Emojiler veya karmaşık ızgaralar yok, sadece sade ve sezgisel bir tasarım.</p>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="bento-item wide flexible-highlight kaifridge-light-card"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ delay: 0.3 }}
+      >
+        <div className="bento-content">
+          <div className="icon-glow-wrapper"><i className="fas fa-sliders-h"></i></div>
+          <h3>Esnek Kalın (STAY FLEXIBLE)</h3>
+          <p>Manuel yönetimi mi tercih ediyorsunuz? Malzemelerinizi sade ve yumuşak tonlu kategorilerle kolayca düzenleyin. Hatta kalan yemeklerinizi sisteme ekleyerek yapay zekanın onları sonraki akşam yemeği planınızla harmanlamasını sağlayın.</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 export default function ProjectDetail() {
   const { id } = useParams();
   const location = useLocation();
@@ -675,6 +842,24 @@ export default function ProjectDetail() {
         document.title = 'Kallor - Smart Color & Measure Tool';
         if (favicon) {
           favicon.href = '/kallor.jpg';
+        }
+
+        return () => {
+          document.title = originalTitle;
+          if (favicon && originalFavicon) {
+            favicon.href = originalFavicon;
+          }
+        };
+      }
+
+      if (id === 'kaifridge') {
+        const originalTitle = document.title;
+        const favicon = document.querySelector("link[rel~='icon']");
+        const originalFavicon = favicon ? favicon.href : '';
+
+        document.title = 'kaiFridge - Akıllı Mutfak Asistanı';
+        if (favicon) {
+          favicon.href = '/kaifridge.jpg';
         }
 
         return () => {
@@ -833,6 +1018,7 @@ export default function ProjectDetail() {
 
           {id === 'kause' && <KauseSloganAnimation />}
           {id === 'kallor' && <KallorSloganAnimation />}
+          {id === 'kaifridge' && <KaiFridgeSloganAnimation />}
 
           <div className="download-btn-container">
             {project.appStore && (
@@ -892,6 +1078,7 @@ export default function ProjectDetail() {
         </section>
 
         {id === 'kallor' && <KallorDetailedFeatures />}
+        {id === 'kaifridge' && <KaiFridgeDetailedFeatures />}
 
         {project.howToVideo && (
           <div className="how-to-section" id="how-it-works">

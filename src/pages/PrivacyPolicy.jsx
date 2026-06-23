@@ -129,6 +129,34 @@ const PRIVACY_DATA = {
       }
     ],
     footer: 'Gizlilikle ilgili sorularınız için: kaiwen.info@gmail.com'
+  },
+  'kaifridge': {
+    title: 'kaiFridge',
+    lastUpdated: '23 Haziran 2026',
+    intro: 'kaiFridge ("biz", "uygulama"), kullanıcılarımızın gizliliğine en üst seviyede önem vermektedir. Bu gizlilik politikası, buzdolabı ve mutfak asistanı uygulamamızı kullandığınızda verilerinizin nasıl işlendiğini açıklar.',
+    sections: [
+      {
+        icon: <Lock size={20} />,
+        title: '1. Veri Yerelliği',
+        content: 'Buzdolabınızdaki ürünler, son kullanma tarihleri ve alışveriş listeleriniz tamamen cihazınızın yerel hafızasında saklanır. Bizim bu verilere erişimimiz yoktur ve verileriniz üçüncü şahıslara aktarılmaz.'
+      },
+      {
+        icon: <EyeOff size={20} />,
+        title: '2. Kamera ve Tarayıcı Kullanımı',
+        content: 'Uygulama içerisindeki ürün ekleme özelliğinde kullanılan kamera izni, yalnızca barkod tarama işlemi için kullanılır. Kamera görüntüleriniz hiçbir şekilde kaydedilmez veya harici bir sunucuya gönderilmez.'
+      },
+      {
+        icon: <Bell size={20} />,
+        title: '3. Yerel Hatırlatıcılar',
+        content: 'Ürünlerinizin son kullanma tarihi yaklaşınca size hatırlatma yapabilmek için yerel bildirimler kullanılır. Bu bildirimler tamamen cihaz üzerinde (yerel) çalışmakta olup, sunucularımıza herhangi bir bildirim verisi gönderilmemektedir.'
+      },
+      {
+        icon: <ShieldCheck size={20} />,
+        title: '4. Üçüncü Şahıslar ve Reklamlar',
+        content: 'Uygulama performansı için anonim hata raporları toplanabilir. Kişisel verileriniz asla reklam ağlarıyla veya üçüncü taraflarla paylaşılmaz.'
+      }
+    ],
+    footer: 'Her türlü sorunuz için bizimle iletişime geçebilirsiniz: kaiwen.info@gmail.com'
   }
 };
 

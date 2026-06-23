@@ -19,7 +19,7 @@ STRATEJİ:
 
 SİTE MİMARİSİ:
 - / (Ana Sayfa), /projects (Projeler), /proposal (Teklif Al & Hizmetler).
-- Detaylar: /project/campus-meal, /project/vision-journal.
+- Detaylar: /project/campus-meal, /project/vision-journal, /project/kaifridge (Buzdolabı takip uygulaması).
 - Bölümler: about (hakkında), app-content (içerik/özellikler), contact (iletişim).
 
 JSON AKSİYONLARI:

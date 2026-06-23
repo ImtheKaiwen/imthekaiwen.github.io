@@ -50,6 +50,13 @@ const APPS = [
     desc: 'Ekran cetveli, anlık çizim ve gelişmiş renk paleti araçları sunan akıllı tasarım asistanı.',
     img: '/kallor.jpg',
     type: 'desktop'
+  },
+  {
+    id: 'kaifridge',
+    title: 'kaiFridge',
+    desc: 'Buzdolabınızdaki malzemelerle yapay zeka destekli tarifler üreten, Apple tarzı minimalist ve akıllı mutfak asistanı.',
+    img: '/kaifridge.jpg',
+    type: 'mobile'
   }
 ];
 

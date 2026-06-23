@@ -20,7 +20,8 @@ const GLOBAL_KEYWORDS = [
   { keywords: ['hakkında', 'kim', 'özgeçmiş'], path: '/#about' },
   { keywords: ['iletişim', 'mail', 'ulaş'], path: '#contact' },
   { keywords: ['teklif', 'fiyat', 'bütçe', 'hizmet', 'hizmetler', 'istek', 'proposal', 'quote', 'offer'], path: '/proposal' },
-  { keywords: ['kallor', 'renk', 'palette', 'cetvel', 'ölçüm', 'pixel'], path: '/project/kallor' }
+  { keywords: ['kallor', 'renk', 'palette', 'cetvel', 'ölçüm', 'pixel'], path: '/project/kallor' },
+  { keywords: ['kaifridge', 'fridge', 'dolap', 'buzdolabı', 'mutfak', 'malzeme', 'ürün'], path: '/project/kaifridge' }
 ];
 
 const LOCAL_MAP = {
@@ -28,9 +29,9 @@ const LOCAL_MAP = {
   'ana sayfa': { action: 'navigate', path: '/' },
   'home': { action: 'navigate', path: '/' },
   'projects': { action: 'navigate', path: '/projects' },
-  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
-  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
-  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }] },
+  'projeler': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
+  'projelerim': { action: 'options', answerText: 'Projelerimiz:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
+  'uygulamalar': { action: 'options', answerText: 'Uygulamalarımız:', options: [{ id: 'campus-meal', label: 'Campus Meal' }, { id: 'vision-journal', label: 'Vision Journal' }, { id: 'kause', label: 'Kause' }, { id: 'kallor', label: 'Kallor' }, { id: 'kaifridge', label: 'kaiFridge' }] },
   'about': { action: 'scroll', target: 'about' },
   'hakkında': { action: 'scroll', target: 'about' },
   'hakkımda': { action: 'scroll', target: 'about' },
@@ -53,6 +54,9 @@ const LOCAL_MAP = {
   'hizmetler': { action: 'navigate', path: '/proposal' },
   'proposal': { action: 'navigate', path: '/proposal' },
   'quote': { action: 'navigate', path: '/proposal' },
+  'kaifridge': { action: 'navigate', path: '/project/kaifridge' },
+  'buzdolabı': { action: 'navigate', path: '/project/kaifridge' },
+  'dolap': { action: 'navigate', path: '/project/kaifridge' },
 };
 
 export default function DynamicIsland() {
@@ -379,6 +383,7 @@ export default function DynamicIsland() {
     if (id === 'vision-journal') { navigate(PROJECT_VISION); handleReset(); return; }
     if (id === 'kause') { navigate('/project/kause'); handleReset(); return; }
     if (id === 'kallor') { navigate('/project/kallor'); handleReset(); return; }
+    if (id === 'kaifridge') { navigate('/project/kaifridge'); handleReset(); return; }
 
     handleReset();
   };
@@ -418,7 +423,8 @@ export default function DynamicIsland() {
                         projectId === 'vision-journal-desktop' ? '/vision_journal_desktop.jpg' :
                           projectId === 'kause' ? '/kause-icon.png' :
                             projectId === 'kallor' ? '/kallor.jpg' :
-                              visionJournalImg
+                              projectId === 'kaifridge' ? '/kaifridge.jpg' :
+                                visionJournalImg
                     }
                     className="island-sticky-icon"
                     alt="Project Icon"
@@ -499,6 +505,7 @@ export default function DynamicIsland() {
                       {opt.id === 'vision-journal' && <img src={visionJournalImg} alt="" className="opt-icon" />}
                       {opt.id === 'kause' && <img src="/kause-icon.png" alt="" className="opt-icon" />}
                       {opt.id === 'kallor' && <img src="/kallor.jpg" alt="" className="opt-icon" />}
+                      {opt.id === 'kaifridge' && <img src="/kaifridge.jpg" alt="" className="opt-icon" />}
                       {(opt.id === 'mail' || opt.id.includes('posta')) && <Mail size={18} />}
                       {opt.id === 'linkedin' && <i className="fab fa-linkedin"></i>}
                       <span>{opt.label}</span>

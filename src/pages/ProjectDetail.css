@@ -1607,6 +1607,7 @@
 .kallor-card-0.feature-card .icon {
   background: linear-gradient(135deg, #df1f1a 0%, #faad29 100%) !important;
 }
+
 .kallor-card-0.feature-card h1 {
   color: #df1f1a !important;
 }
@@ -1615,6 +1616,7 @@
 .kallor-card-1.feature-card .icon {
   background: linear-gradient(135deg, #00a86b 0%, #00c88c 100%) !important;
 }
+
 .kallor-card-1.feature-card h1 {
   color: #00c88c !important;
 }
@@ -1623,6 +1625,7 @@
 .kallor-card-2.feature-card .icon {
   background: linear-gradient(135deg, #02a4e8 0%, #0ca9dc 100%) !important;
 }
+
 .kallor-card-2.feature-card h1 {
   color: #0ca9dc !important;
 }
@@ -1636,4 +1639,150 @@
 .kallor-footer .info-box a:hover,
 .kallor-footer .footer-link-btn:hover {
   color: #02a4e8 !important;
+}
+
+/* kaiFridge Slogan Animation */
+.kaifridge-slogan-section.wider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  background: #ffffff;
+  border-radius: 40px;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 350px;
+  position: relative;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.kaifridge-animated-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.kaifridge-logo-text {
+  font-size: 3rem;
+  color: #1f2937;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.kaifridge-slogan-section .slogan-line span {
+  color: #1f2937;
+}
+
+.kaifridge-slogan-section .slogan-line.text-sm span {
+  color: #4b5563;
+}
+
+.highlight.snap {
+  background: linear-gradient(135deg, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.taste {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.clean {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.highlight.kaifridge {
+  background: linear-gradient(135deg, #10b981 0%, #d97706 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4rem;
+  text-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+}
+
+@media (max-width: 768px) {
+  .highlight.kaifridge {
+    font-size: 2.8rem;
+  }
+  .kaifridge-slogan-section.wider {
+    padding: 40px 20px;
+    margin: 30px 10px;
+    min-height: 300px;
+  }
+}
+
+/* kaiFridge Bento Highlight Glows */
+.snap-highlight .icon-glow-wrapper {
+  background: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.snap-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.taste-highlight .icon-glow-wrapper {
+  background: rgba(245, 158, 11, 0.15);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+}
+
+.taste-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.clean-highlight .icon-glow-wrapper {
+  background: rgba(139, 92, 246, 0.15);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+.clean-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.flexible-highlight .icon-glow-wrapper {
+  background: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+}
+
+.flexible-highlight .icon-glow-wrapper i {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* kaiFridge light card override: white background for kaiFridge bento items */
+.kaifridge-light-card.bento-item {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.kaifridge-light-card.bento-item::before {
+  background: none;
+}
+
+.kaifridge-light-card.bento-item h3 {
+  color: #0f1115 !important;
+}
+
+.kaifridge-light-card.bento-item p {
+  color: #64748b;
+}
+
+.kaifridge-light-card.bento-item:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
