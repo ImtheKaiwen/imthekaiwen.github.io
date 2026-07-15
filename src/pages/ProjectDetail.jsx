@@ -7,6 +7,22 @@ import visionJournalImg from '../assets/visionjournal.png';
 import './ProjectDetail.css';
 
 const projectData = {
+  'cube-rivals': {
+    title: 'Cube Rivals',
+    img: '/cube-rival.png',
+    subtitle: 'Step into the world of 3D cube puzzles with guided challenges and global leaderboards.',
+    themeColor: '#4C1D95',
+    themeGradient: 'linear-gradient(135deg, #2E1065, #4C1D95)',
+    screenshots: [1, 2, 3, 4, 5, 6, 7].map(n => `/project-imgs/cube-rival/${n}.png`),
+    features: [
+      { icon: 'fas fa-graduation-cap', title: 'Easy Onboarding', value: 'Warmup Puzzles' },
+      { icon: 'fas fa-stopwatch', title: 'Puzzle Rush', value: '60-Second Runs' },
+      { icon: 'fas fa-globe', title: 'Daily Cube', value: 'Global Leaderboard' },
+      { icon: 'fas fa-cube', title: 'Premium 3D', value: 'Haptic Feedback' }
+    ],
+    universities: [],
+    contact: 'kaiwen.info@gmail.com'
+  },
   'campus-meal': {
     title: 'Campus Meal',
     img: campusMealImg,
@@ -116,6 +132,7 @@ const projectData = {
       { icon: 'fas fa-feather', title: 'Sıfır Karmaşa', value: 'Sade Arayüz' }
     ],
     universities: [],
+    appStore: 'https://apps.apple.com/tr/app/kaifridge-ai-meal-planner/id6783181650?l=tr',
     contact: 'kaiwen.info@gmail.com'
   },
   'kaido': {

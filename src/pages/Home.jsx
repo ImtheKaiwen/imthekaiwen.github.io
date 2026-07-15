@@ -184,9 +184,6 @@ export default function Home() {
 
             <div className="footer-column">
               <h4>Bağlantılar</h4>
-              <a href="https://kaiwen.onrender.com" target="_blank" rel="noreferrer" className="footer-link">
-                <Globe size={18} /> Kişisel Web Sitem
-              </a>
               <button onClick={() => navigate('/projects')} className="footer-link-btn">
                 <Monitor size={18} /> Projelerim
               </button>

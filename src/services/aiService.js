@@ -19,7 +19,7 @@ STRATEJİ:
 
 SİTE MİMARİSİ:
 - / (Ana Sayfa), /projects (Projeler), /proposal (Teklif Al & Hizmetler).
-- Detaylar: /project/campus-meal, /project/vision-journal, /project/kaifridge (Buzdolabı takip uygulaması), /project/kaido (Zamanlayıcılı, klasörlü, sade todo uygulaması).
+- Detaylar: /project/campus-meal, /project/vision-journal, /project/kaifridge (Buzdolabı takip uygulaması), /project/kaido (Zamanlayıcılı, klasörlü, sade todo uygulaması), /project/cube-rivals (3D küp bulmaca oyunu).
 - Bölümler: about (hakkında), app-content (içerik/özellikler), contact (iletişim).
 
 JSON AKSİYONLARI:

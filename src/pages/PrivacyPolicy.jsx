@@ -5,6 +5,29 @@ import { ArrowLeft, ShieldCheck, Lock, EyeOff, Bell } from 'lucide-react';
 import './PrivacyPolicy.css';
 
 const PRIVACY_DATA = {
+  'cube-rivals': {
+    title: 'Cube Rivals',
+    lastUpdated: '16 Temmuz 2026',
+    intro: 'Cube Rivals ("biz", "uygulama"), 3D küp bulmaca deneyimi sunarken kullanıcı verilerinin gizliliğine son derece önem vermektedir.',
+    sections: [
+      {
+        icon: <Lock size={20} />,
+        title: '1. Tam Veri Yerelliği',
+        content: 'Oyun içi ilerlemeniz, kazandığınız küp tasarımları ve çözme süreleriniz kendi cihazınızda (yerel olarak) depolanır. Sadece skor tabloları (leaderboard) için gerekli olan veriler sunucuya anonim bir kimlik veya sizin belirlediğiniz bir kullanıcı adıyla gönderilir.'
+      },
+      {
+        icon: <EyeOff size={20} />,
+        title: '2. Kişisel Veri Toplanmaz',
+        content: 'Uygulama, isim, e-posta, telefon numarası gibi sizi kişisel olarak tanımlayabilecek hiçbir veri toplamaz veya talep etmez.'
+      },
+      {
+        icon: <ShieldCheck size={20} />,
+        title: '3. Üçüncü Taraflar',
+        content: 'Liderlik tabloları ve günlük görevler için güvenli veritabanı servisleri kullanılmaktadır. Bu servisler yalnızca oyun skorlarınızı senkronize etmek içindir ve kişisel verilerinizi reklam ağlarıyla paylaşmaz.'
+      }
+    ],
+    footer: 'Gizlilik ile ilgili sorularınız için bizimle iletişime geçebilirsiniz: kaiwen.info@gmail.com'
+  },
   'campus-meal': {
     title: 'Campus Meal',
     lastUpdated: '27 Nisan 2026',

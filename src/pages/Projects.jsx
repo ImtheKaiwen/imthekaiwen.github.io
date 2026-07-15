@@ -9,6 +9,13 @@ import './Projects.css';
 
 const APPS = [
   {
+    id: 'cube-rivals',
+    title: 'Cube Rivals',
+    desc: 'Yeni başlayanlar için adım adım rehberlik eden, rekabetçi ve premium bir 3D küp bulmaca deneyimi.',
+    img: '/cube-rival.png',
+    type: 'mobile'
+  },
+  {
     id: 'campus-meal',
     title: 'Campus Meal',
     desc: 'Üniversite yemekhane menülerini takip edebileceğiniz modern platform.',

@@ -49,6 +49,8 @@ function AnimatedRoutes() {
       updateFavicon('./kaifridge.jpg', true);
     } else if (location.pathname.includes('kaido')) {
       updateFavicon('./kaido.jpg', true);
+    } else if (location.pathname.includes('cube-rivals')) {
+      updateFavicon('./cube-rival.png', true);
     } else {
       updateFavicon('./logo.jpg', true); // Make PP circular
     }
